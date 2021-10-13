@@ -9,10 +9,10 @@ function Header(props) {
     <nav className="navbar">
       <h1>The Homies Blog</h1>
       <div className="links">
-        <a href="../features/HomePage.js">Home</a>
-        <a href="/Posts.js">Posts</a>
-        <a href="/Register.js" className="sign-in">Sign in</a>
-        <a href="/sign-in" className="Resgister">Register</a>
+        <a href="./HomePage">Home</a>
+        <a href="./Posts">Posts</a>
+        <a href="./Register" className="sign-in">Sign in</a>
+        <a href="./Login" className="Resgister">Register</a>
       </div>
     </nav>
   );
