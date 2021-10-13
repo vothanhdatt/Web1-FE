@@ -1,6 +1,8 @@
 const routes = {
   homepage: "/homepage",
-  detail: "/detail",
+  profile: "/profile",
+    detail: "/detail",
+
 };
 
 export default routes;
