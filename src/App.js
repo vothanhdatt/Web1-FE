@@ -1,4 +1,3 @@
-
 import "./App.css";
 import RouteContainer from "./features/index";
 import LoadingOverlay from "react-loading-overlay";
@@ -11,7 +10,7 @@ function App() {
   return (
     <LoadingOverlay active={false} spinner>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <div className="App">{RouteContainer}</div>
         <Footer />
       </Router>

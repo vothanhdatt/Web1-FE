@@ -8,5 +8,9 @@ function* rootSaga() {
     actionTypes.GETPOSTBYCATEGORY_REQUEST,
     listpost.getPostByCategorySaga
   );
+  yield takeEvery(
+    actionTypes.GETCATEGORIES_REQUEST,
+    listpost.getCategoriesSaga
+  );
 }
 export default rootSaga;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 ListPost.propTypes = {
@@ -21,10 +21,22 @@ ListPost.defaultProps = {
 
 function ListPost(props) {
   const { post } = props;
+  //lodamore
+  const [noOfElement, setNoOfElement] = useState(5);
+  const [count, setCount] = useState();
+  const loadMore = () => {
+    setNoOfElement(noOfElement + noOfElement);
+    if (noOfElement + noOfElement > post.length) {
+      setCount(post.length);
+    } else {
+      setCount(noOfElement + noOfElement);
+    }
+  };
   if (post) {
+    const slice = post.slice(0, noOfElement);
     return (
       <>
-        {post.map((post) => (
+        {slice.map((post) => (
           <div
             className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start "
             key={post.id}
@@ -54,6 +66,15 @@ function ListPost(props) {
             </div>
           </div>
         ))}
+        <div className="mt-3 text-center sm:mt-5">
+          <button
+            hidden={count == post.length || post.length == 0}
+            className="p-1 px-2 text-xs font-bold bg-gray-200 rounded-lg btn btn-dark d-block w-100 sm:text-sm hover:bg-blue-300"
+            onClick={() => loadMore()}
+          >
+            Xem Thêm Bài Viết
+          </button>
+        </div>
       </>
     );
   } else {

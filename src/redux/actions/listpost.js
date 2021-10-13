@@ -21,3 +21,14 @@ export const getPostByCategoryRequest = (payload) => {
     payload: payload,
   };
 };
+//get category
+export const GETCATEGORIES_REQUEST = "GETCATEGORIES_REQUEST";
+export const GETCATEGORIES_SUCCESS = "GETCATEGORIES_SUCCESS";
+export const GETCATEGORIES_FAILURE = "GETCATEGORIES_FAILURE";
+
+export const getCategoriesRequest = (payload) => {
+  return {
+    type: GETCATEGORIES_REQUEST,
+    payload: payload,
+  };
+};

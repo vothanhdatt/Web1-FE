@@ -77,4 +77,40 @@ export default {
       });
     }
   },
+  //GET  CATEGORIES
+  getCategoriesSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "get",
+        "get-all-categories",
+        payload
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.GETCATEGORIES_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.GETCATEGORIES_FAILURE,
+            error: responseData.message,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.GETCATEGORIES_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.GETCATEGORIES_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
 };

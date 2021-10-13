@@ -70,3 +70,32 @@ export const getPostByCategoryReducer = (state = initialState, action) => {
       return state;
   }
 };
+export const getCategoriesReducer = (state = initialState, action) => {
+  let newState = {};
+  switch (action.type) {
+    case actionTypes.GETCATEGORIES_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.GETCATEGORIES_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+
+      newState.data = action.payload;
+
+      return newState;
+
+    case actionTypes.GETCATEGORIES_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
+    default:
+      return state;
+  }
+};
