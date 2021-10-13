@@ -1,7 +1,10 @@
+// Packages
 import { Link, Redirect, useHistory } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+// Constant
+import routes from "../../constant/routes";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -15,6 +18,7 @@ export default function ProfilePage() {
     watch,
   } = useForm();
 
+  let history = useHistory();
   //
   const onHandleUpdate = () => {
     //Vào trang cập nhật bài viết
@@ -22,12 +26,15 @@ export default function ProfilePage() {
   //
   const onHandleNewPost = () => {
     //Vào trang tạo bài viết
+    history.push(routes.createpost);
   };
   //
 
   return (
     <>
       {/* Header */}
+      {/* <Header></Header> */}
+      {/* Profile */}
       <main className="profile-page bg-gray-200 pb-5">
         <section className="relative block" style={{ height: "500px" }}>
           <div
@@ -148,7 +155,7 @@ export default function ProfilePage() {
           <div className="col-span-6">
             <div>
               <div className="bg-gray-200   justify-center">
-                {/* Component */}
+                {/* Component Post*/}
                 <div>
                   <div className="flex w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto  mb-5">
                     <div className="flex items-center w-full">
@@ -322,6 +329,7 @@ export default function ProfilePage() {
       </main>
 
       {/* Footer */}
+      {/* <Footer></Footer> */}
     </>
   );
 }
