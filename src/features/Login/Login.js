@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const Login = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -37,24 +37,19 @@ const Login = () => {
                     </div>
                     <div className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
                         <button>
-                            <a href="../HomePage">
-                                Login
-                            </a>
+                        <Link to="./HomePage">Login</Link>
                         </button>
                     </div>
                     <div className='flex justify-center items-center mt-6'>
                         <button
                             className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
-                        ><a href="../Register">
-                                Register
-                            </a>
+                        > <Link to="./Register"> Register</Link>
                         </button>
                     </div>
                     <div className="text-center color-red">
                         <button className="bg-white">
-                            <a href="../Pass">
-                                Forgot password
-                            </a>
+                        <Link to="./Pass"> Forgot password</Link>
+                               
                         </button>
                     </div>
 

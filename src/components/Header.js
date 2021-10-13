@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { NavLink, link } from 'react-router-dom';
 import '../css/Header.css';
@@ -9,10 +10,10 @@ function Header(props) {
     <nav className="navbar">
       <h1>The Homies Blog</h1>
       <div className="links">
-        <a href="./HomePage">Home</a>
-        <a href="./Posts">Posts</a>
-        <a href="./Register" className="sign-in">Sign in</a>
-        <a href="./Login" className="Resgister">Register</a>
+        <Link to="./HomePage"> Home</Link>
+        <Link to="./Posts"> Posts</Link>
+        <Link to="./Register" className="sign-in"> Register</Link>
+        <Link to="./Login" className="Resgister"> Login</Link>
       </div>
     </nav>
   );

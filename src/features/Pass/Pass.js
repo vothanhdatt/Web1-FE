@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const Pass = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -47,9 +47,7 @@ const Pass = () => {
 
                     <div className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
                         <button>
-                            <a href="./Login">
-                                Confirm
-                            </a>
+                        <Link to="./Login">Confirm</Link>
                         </button>
                     </div>
 
