@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { NavLink, link } from "react-router-dom";
 import "../css/Header.css";
@@ -36,14 +37,10 @@ function Header(props) {
       )}
 
       <div className="links">
-        <Link to={route.homepage}>Home</Link>
-        <a href="/Posts.js">Posts</a>
-        <a href="/Register.js" className="sign-in">
-          Sign in
-        </a>
-        <a href="/sign-in" className="Resgister">
-          Register
-        </a>
+        <Link to="./HomePage"> Home</Link>
+        <Link to="./Posts"> Posts</Link>
+        <Link to="./Register" className="sign-in"> Register</Link>
+        <Link to="./Login" className="Resgister"> Login</Link>
       </div>
     </nav>
   );

@@ -7,11 +7,17 @@ import route from "../constant/routes";
 import homepage from "./Homepage/HomePage";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import CreatePost from "./CreatePost/CreatePost";
-
+import Login from "./Login/Login";
+import Register from "./Register/Register";
+import Pass from "./Pass/Pass";
 export default (
   <Switch>
     <Route exact path={route.homepage} component={homepage} />
     <Route exact path={route.profile} component={ProfilePage} />
     <Route exact path={route.createpost} component={CreatePost} />
+    <Route exact path={route.homepage} component={homepage} />
+    <Route exact path={route.Login} component={Login} />
+    <Route exact path={route.Register} component={Register} />
+    <Route exact path={route.Pass} component={Pass} />
   </Switch>
 );
