@@ -13,7 +13,7 @@ const Pass = () => {
         <div className='h-screen flex bg-gray-bg1'>
             <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
                 <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
-                FORGOT PASSWORD
+                    FORGOT PASSWORD
                 </h1>
 
                 <form onSubmit={handleFormSubmit}>
@@ -44,12 +44,15 @@ const Pass = () => {
                             placeholder='New PassWord'
                         />
                     </div>
-                    <a href="#">
-                        <div  className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
-                            <button>Confirm</button>
-                            
-                        </div>
-                    </a>
+
+                    <div className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
+                        <button>
+                            <a href="./Login">
+                                Confirm
+                            </a>
+                        </button>
+                    </div>
+
                 </form>
             </div>
         </div>
