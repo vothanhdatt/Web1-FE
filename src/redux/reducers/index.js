@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-import {
-  featurepostReducer,
-
-} from "./listpost";
+import { featurepostReducer, getPostByCategoryReducer } from "./listpost";
 
 // eslint-disable-next-line
 export default combineReducers({
   featurepostReducer,
+  getPostByCategoryReducer,
 });

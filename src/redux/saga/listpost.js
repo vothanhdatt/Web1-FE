@@ -41,4 +41,40 @@ export default {
       });
     }
   },
+  //GET POST BY CATEGORY
+  getPostByCategorySaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "get",
+        "get-post-by-category",
+        payload
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.GETPOSTBYCATEGORY_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.GETPOSTBYCATEGORY_FAILURE,
+            error: responseData.message,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.GETPOSTBYCATEGORY_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.GETPOSTBYCATEGORY_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
 };
