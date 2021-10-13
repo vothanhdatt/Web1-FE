@@ -7,9 +7,10 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    display: ["responsive", "group-hover", "group-focus"],
+    outline: ["focus"],
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
