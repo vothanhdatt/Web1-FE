@@ -4,5 +4,13 @@ import listpost from "./listpost";
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
+  yield takeEvery(
+    actionTypes.GETPOSTBYCATEGORY_REQUEST,
+    listpost.getPostByCategorySaga
+  );
+  yield takeEvery(
+    actionTypes.GETCATEGORIES_REQUEST,
+    listpost.getCategoriesSaga
+  );
 }
 export default rootSaga;
