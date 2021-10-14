@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 // Constant
 import routes from "../../constant/routes";
+// Components
+import Header from "../../components/Header";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -33,7 +35,7 @@ export default function ProfilePage() {
   return (
     <>
       {/* Header */}
-      {/* <Header></Header> */}
+      <Header></Header>
       {/* Profile */}
       <main className="profile-page bg-gray-200 pb-5">
         <section className="relative block" style={{ height: "500px" }}>
