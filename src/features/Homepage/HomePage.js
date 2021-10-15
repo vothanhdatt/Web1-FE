@@ -4,6 +4,7 @@ import ListPost from "../../components/ListPost";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getCategoriesRequest,
+  getFeaturePostRequest,
   getPostByCategoryRequest,
 } from "../../redux/actions";
 import { Link, Redirect, useHistory } from "react-router-dom";
@@ -38,13 +39,13 @@ function HomePage(props) {
       })
     );
   }, [category]);
-  const [pagination, setPagination] = useState(1);
-
-  function handlePageChange(newPage) {
-    setPagination(newPage);
-    console.log("newpage:" + newPage);
-  }
-
+  //feature post
+  const getFeaturePost = useSelector(
+    (state) => state.getFeaturePostReducer.data
+  );
+  useEffect(() => {
+    dispatch(getFeaturePostRequest());
+  }, []);
   if (getPostByCategory) {
     return (
       <>
@@ -57,14 +58,8 @@ function HomePage(props) {
             <div className="col-span-1">
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
               <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
-                Bài Viết Nổi Bật <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
+                Bài Viết Nổi Bật
+                <FeaturePost featurePost={getFeaturePost} />
               </h1>
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
             </div>
@@ -75,7 +70,6 @@ function HomePage(props) {
               </h1>
             </div>
           </div>
-          <Pagination pagination={pagination} onPageChange={handlePageChange} />
         </div>
       </>
     );
