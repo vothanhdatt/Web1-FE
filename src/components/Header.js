@@ -16,18 +16,19 @@ function Header(props) {
     <nav className="navbar">
       <h1>The Homies Blog</h1>
       {listCategories ? (
-        <div className="px-3 ml-4 py-2 text-base font-medium text-white bg-red-500  w-44  rounded-md appearance-none hover:bg-pink-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-          <select onChange={(e) => onchange(e)}>
-            <option>Categories</option>
-            {listCategories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <select
+          onChange={(e) => onchange(e)}
+          className="px-3 ml-4 py-2 text-base font-medium text-white bg-pink-500 rounded-md appearance-none hover:bg-pink-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+        >
+          <option>Categories</option>
+          {listCategories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
       ) : (
-        <div>hihi</div>
+        <div></div>
       )}
 
       <div className="links">
