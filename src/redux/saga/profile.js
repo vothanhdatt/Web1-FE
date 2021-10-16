@@ -47,7 +47,7 @@ export default {
     try {
       let response = yield global.apiService.apiCall(
         "post",
-        "member-update-profile",
+        "member-profile",
         payload,
         true
       );
