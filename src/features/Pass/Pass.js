@@ -45,7 +45,7 @@ const Pass = () => {
                         />
                     </div>
 
-                    <div className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
+                    <div className={`bg-blue-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
                         <button>
                         <Link to="./Login">Confirm</Link>
                         </button>
