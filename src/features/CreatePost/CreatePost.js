@@ -6,6 +6,8 @@ import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 // Constant
 import routes from "../../constant/routes";
+// Components
+import Header from "../../components/Header";
 
 function CreatePost() {
   const [cover, setCover] = useState("");
@@ -109,7 +111,7 @@ function CreatePost() {
   return (
     <>
       {/* Header */}
-
+      <Header></Header>
       {/* Form Create Post */}
       <div className="py-12">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

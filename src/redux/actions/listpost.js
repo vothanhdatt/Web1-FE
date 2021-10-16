@@ -32,3 +32,15 @@ export const getCategoriesRequest = (payload) => {
     payload: payload,
   };
 };
+
+//get category
+export const GETFEATUREPOST_REQUEST = "GETFEATUREPOST_REQUEST";
+export const GETFEATUREPOST_SUCCESS = "GETFEATUREPOST_SUCCESS";
+export const GETFEATUREPOST_FAILURE = "GETFEATUREPOST_FAILURE";
+
+export const getFeaturePostRequest = (payload) => {
+  return {
+    type: GETFEATUREPOST_REQUEST,
+    payload: payload,
+  };
+};
