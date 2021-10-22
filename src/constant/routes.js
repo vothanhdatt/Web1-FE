@@ -6,6 +6,7 @@ const routes = {
   Login: "/Login",
   Register: "/Register",
   Pass: "/Pass",
+  detailpost: "/detailpost",
 };
 
 export default routes;
