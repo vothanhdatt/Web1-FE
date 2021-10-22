@@ -11,6 +11,7 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Pass from "./Pass/Pass";
 import UpdateProfile from "./UpdateProfilePage/UpdateProfilePage";
+import detailpost from "./DetalPost/DetailPost";
 export default (
   <Switch>
     <Route exact path={route.homepage} component={homepage} />
@@ -21,5 +22,6 @@ export default (
     <Route exact path={route.Register} component={Register} />
     <Route exact path={route.Pass} component={Pass} />
     <Route exact path={route.updateprofile} component={UpdateProfile} />
+    <Route exact path={route.detailpost} component={detailpost} />
   </Switch>
 );
