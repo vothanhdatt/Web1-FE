@@ -1,3 +1,4 @@
+// FEATURE VIEW PROFILE
 // Packages
 import { Link, Redirect, useHistory } from "react-router-dom";
 import React, { Fragment, useState, useEffect } from "react";
@@ -39,7 +40,7 @@ export default function ProfilePage() {
   useEffect(() => {
     dispatch(getProfileRequest());
   }, []);
-  const profile = useSelector((state) => state.getProfileReducer.data);
+  const profile = useSelector(state => state.getProfileReducer.data);
 
   return (
     <>
