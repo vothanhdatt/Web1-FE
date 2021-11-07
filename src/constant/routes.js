@@ -1,5 +1,6 @@
 const routes = {
   homepage: "/homepage",
+  // FEATURE VIEW PROFILE
   profile: "/profile",
   detail: "/detail",
   createpost: "/createpost",

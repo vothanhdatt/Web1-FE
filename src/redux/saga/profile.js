@@ -4,7 +4,7 @@ console.log(actionType);
 
 // eslint-disable-next-line
 export default {
-  //
+  // FEATURE VIEW PROFILE
   getProfileSaga: function* (action) {
     let payload = action.payload;
     try {
