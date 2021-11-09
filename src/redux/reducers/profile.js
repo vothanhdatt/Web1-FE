@@ -44,6 +44,7 @@ export const getProfileReducer = (state = initialState, action) => {
       toast(action.error);
       return newState;
 
+    // FEATURE UPDATE PROFILE
     //UPDATE PROFILE
     case actionTypes.UPDATE_PROFILE_REQUEST:
       newState = _.cloneDeep(state);

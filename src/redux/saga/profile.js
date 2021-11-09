@@ -41,6 +41,7 @@ export default {
       });
     }
   },
+  // FEATURE UPDATE PROFILE
   //UPDATE PROFILE
   updateProfileSaga: function* (action) {
     let payload = action.payload;
