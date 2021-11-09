@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import routes from "../../constant/routes";
 // Components
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -26,7 +27,8 @@ export default function ProfilePage() {
   const dispatch = useDispatch();
   //
   const onHandleUpdate = () => {
-    //Vào trang cập nhật bài viết
+    //Vào trang cập nhật profile
+    history.push(routes.updateprofile);
   };
   //
   const onHandleNewPost = () => {

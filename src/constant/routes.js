@@ -7,6 +7,8 @@ const routes = {
   Register: "/Register",
   Pass: "/Pass",
   detailpost: "/detailpost",
+    updateprofile: "/updateprofile",
+
 };
 
 export default routes;

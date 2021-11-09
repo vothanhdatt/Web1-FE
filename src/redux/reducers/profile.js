@@ -10,6 +10,11 @@ const initialState = {
   error: null,
   data: null,
 };
+toast.configure({
+  autoClose: 3000,
+  draggable: false,
+  position: toast.POSITION.TOP_CENTER,
+});
 
 export const getProfileReducer = (state = initialState, action) => {
   let newState = {};
@@ -51,10 +56,10 @@ export const getProfileReducer = (state = initialState, action) => {
       newState.isSuccess = true;
 
       newState.data = action.payload;
-      console.log("data nè má ơi: ", action.payload);
+      //console.log("data nè má ơi: ", action.payload);
       localStorage.setItem("avatar", action.payload.avatar);
       toast("Cập nhật thành công.!");
-      //window.location.href = routes.profile;
+      window.location.href = routes.profile;
       return newState;
 
     case actionTypes.UPDATE_PROFILE_FAILURE:
