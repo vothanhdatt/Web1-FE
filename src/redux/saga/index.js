@@ -2,6 +2,8 @@ import { takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../actions";
 import listpost from "./listpost";
 import profile from "./profile";
+import getdata from "./getdata";
+import CRUDpost from "./CRUDpost";
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
@@ -22,5 +24,12 @@ function* rootSaga() {
     actionTypes.UPDATE_PROFILE_REQUEST,
     profile.updateProfileSaga
   );
+  // GET ALL CATEGORIES
+  yield takeEvery(
+    actionTypes.GET_ALL_CATEGORIE_REQUEST,
+    getdata.getAllCategorieSaga
+  );
+  // CREATE POST
+  yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
 }
 export default rootSaga;
