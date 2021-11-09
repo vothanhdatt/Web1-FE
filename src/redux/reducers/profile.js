@@ -19,6 +19,7 @@ toast.configure({
 export const getProfileReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
+    // FEATURE VIEW PROFILE
     //GET PROFILE
     case actionTypes.GET_PROFILE_REQUEST:
       newState = _.cloneDeep(state);
@@ -43,6 +44,7 @@ export const getProfileReducer = (state = initialState, action) => {
       toast(action.error);
       return newState;
 
+    // FEATURE UPDATE PROFILE
     //UPDATE PROFILE
     case actionTypes.UPDATE_PROFILE_REQUEST:
       newState = _.cloneDeep(state);
