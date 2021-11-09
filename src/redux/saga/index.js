@@ -18,9 +18,14 @@ function* rootSaga() {
     listpost.getFeaturePostSaga
   );
   yield takeEvery(actionTypes.GET_PROFILE_REQUEST, profile.getProfileSaga);
+  // FEATURE UPDATE PROFILE
   yield takeEvery(
     actionTypes.UPDATE_PROFILE_REQUEST,
     profile.updateProfileSaga
+  );
+  yield takeEvery(
+    actionTypes.GETDETAILPOST_REQUEST,
+    listpost.getDetailPostSaga
   );
 }
 export default rootSaga;
