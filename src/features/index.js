@@ -15,6 +15,7 @@ import detailpost from "./DetalPost/DetailPost";
 export default (
   <Switch>
     <Route exact path={route.homepage} component={homepage} />
+    {/* FEATURE VIEW PROFILE */}
     <Route exact path={route.profile} component={ProfilePage} />
     <Route exact path={route.createpost} component={CreatePost} />
     <Route exact path={route.homepage} component={homepage} />
