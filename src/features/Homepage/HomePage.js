@@ -74,7 +74,11 @@ function HomePage(props) {
       </>
     );
   } else {
-    return <div>12345</div>;
+    return (
+      <div class="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
+        <div className="animate-spin rounded-full h-40 w-40 border-t-4 border-b-4 border-purple-500"></div>
+      </div>
+    );
   }
 }
 export default HomePage;

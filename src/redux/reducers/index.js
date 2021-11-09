@@ -4,8 +4,11 @@ import {
   getPostByCategoryReducer,
   getCategoriesReducer,
   getFeaturePostReducer,
+  getDetailPostReducer,
 } from "./listpost";
 import { getProfileReducer } from "./profile";
+import { getAllCategorieReducer } from "./getdata";
+import CRUDPostReducer from "./CRUDpost";
 // eslint-disable-next-line
 export default combineReducers({
   featurepostReducer,
@@ -13,4 +16,7 @@ export default combineReducers({
   getCategoriesReducer,
   getFeaturePostReducer,
   getProfileReducer,
+  getAllCategorieReducer,
+  CRUDPostReducer,
+  getDetailPostReducer,
 });

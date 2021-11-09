@@ -1,5 +1,6 @@
 const routes = {
   homepage: "/homepage",
+  // FEATURE VIEW PROFILE
   profile: "/profile",
   detail: "/detail",
   createpost: "/createpost",
@@ -7,8 +8,7 @@ const routes = {
   Register: "/Register",
   Pass: "/Pass",
   detailpost: "/detailpost",
-    updateprofile: "/updateprofile",
-
+  updateprofile: "/updateprofile",
 };
 
 export default routes;
