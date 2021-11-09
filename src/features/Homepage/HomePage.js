@@ -7,9 +7,7 @@ import {
   getFeaturePostRequest,
   getPostByCategoryRequest,
 } from "../../redux/actions";
-import { Link, Redirect, useHistory } from "react-router-dom";
 import Header from "../../components/Header";
-import Pagination from "../../components/Pagination";
 
 HomePage.propTypes = {};
 

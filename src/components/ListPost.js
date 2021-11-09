@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 ListPost.propTypes = {
   image: PropTypes.string,
@@ -48,7 +49,9 @@ function ListPost(props) {
               />
             </div>
             <div className="flex-grow overflow-ellipsis break-words w-1">
-              <p className="font-sans text-xl font-bold py-1">{post.name}</p>
+              <Link to={`/detailpost/${post.id}`}>
+                <p className="font-sans text-xl font-bold py-1">{post.name}</p>
+              </Link>
               <div className="">
                 <p
                   className="text-sm font-sans whitespace-normal overflow-hidden line-clamp-2 overflow-ellipsis break-words"

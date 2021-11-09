@@ -12,10 +12,10 @@ function DetailPost(props) {
   useEffect(() => {
     dispatch(
       getDetailPostRequest({
-        postID: 1,
+        postID: props.match.params.id,
       })
     );
-  }, []);
+  }, [props.match.params.id]);
 
   if (getDetailPost) {
     return (

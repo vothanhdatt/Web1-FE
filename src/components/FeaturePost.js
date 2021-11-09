@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 FeaturePost.propTypes = {
   image: PropTypes.string,
@@ -28,9 +29,11 @@ function FeaturePost(props) {
             </div>
             <div className="col-span-2 text-xs -pt-1 lg:ml-8 xl:ml-0 content-center">
               <div className="w-52">
-                <p className="font-sans font-bold whitespace-normal sm:text-sm lg:text-base overflow-hidden line-clamp-3 overflow-ellipsis">
-                  {post.name}
-                </p>
+                <Link to={`/detailpost/${post.id}`}>
+                  <p className="font-sans font-bold whitespace-normal sm:text-sm lg:text-base overflow-hidden line-clamp-3 overflow-ellipsis">
+                    {post.name}
+                  </p>
+                </Link>
               </div>
             </div>
           </div>
