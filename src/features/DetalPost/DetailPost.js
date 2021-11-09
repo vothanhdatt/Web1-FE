@@ -30,7 +30,7 @@ function DetailPost(props) {
               <div className="w-16 h-16 ">
                 <img
                   className="w-16 border-2 border-blue-500 rounded-full h-16"
-                  src="https://via.placeholder.com/60"
+                  src={getDetailPost.authorAvatar}
                 />
               </div>
               <div className="pl-2 mb-1 whitespace-normal text-sm  ">
@@ -50,8 +50,7 @@ function DetailPost(props) {
             <div className="px-2">
               <img
                 className="mx-auto my-10 rounded-xl"
-                src="https://via.placeholder.com/680x450"
-                // src={getDetailPost.image}
+                src={getDetailPost.image}
               />
             </div>
             <div className="px-2">
@@ -72,7 +71,7 @@ function DetailPost(props) {
     );
   } else {
     return (
-      <div class="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
+      <div className="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
         <div className="animate-spin rounded-full h-40 w-40 border-t-4 border-b-4 border-purple-500"></div>
       </div>
     );

@@ -37,7 +37,10 @@ function ListPost(props) {
     return (
       <>
         {slice.map((post) => (
-          <div className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start">
+          <div
+            className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start"
+            key={post.id}
+          >
             <div className="mr-2 w-52 h-32">
               <img
                 className="rounded-lg w-52 h-32"
@@ -55,10 +58,10 @@ function ListPost(props) {
                 </p>
               </div>
               <div className="flex text-xs items-center py-1">
-                <div className="mr-3">
+                <div className="mr-3 w-6 h-6 ">
                   <img
                     className="w-6 h-6 border-2 border-blue-500 rounded-full "
-                    src="https://via.placeholder.com/60x60"
+                    src={post.authorAvatar}
                   />
                 </div>
                 <div className="">

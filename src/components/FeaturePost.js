@@ -24,10 +24,7 @@ function FeaturePost(props) {
             key={post.id}
           >
             <div className="mr-3">
-              <img
-                className="rounded-lg"
-                src="https://via.placeholder.com/130"
-              />
+              <img className="rounded-lg" src={post.image} />
             </div>
             <div className="col-span-2 text-xs -pt-1 lg:ml-8 xl:ml-0 content-center">
               <div className="w-52">
