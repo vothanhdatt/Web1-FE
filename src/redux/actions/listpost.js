@@ -44,3 +44,15 @@ export const getFeaturePostRequest = (payload) => {
     payload: payload,
   };
 };
+
+//detail póst
+export const GETDETAILPOST_REQUEST = "GETDETAILPOST_REQUEST";
+export const GETDETAILPOST_SUCCESS = "GETDETAILPOST_SUCCESS";
+export const GETDETAILPOST_FAILURE = "GETDETAILPOST_FAILURE";
+
+export const getDetailPostRequest = (payload) => {
+  return {
+    type: GETDETAILPOST_REQUEST,
+    payload: payload,
+  };
+};

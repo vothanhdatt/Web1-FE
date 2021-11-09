@@ -23,5 +23,9 @@ function* rootSaga() {
     actionTypes.UPDATE_PROFILE_REQUEST,
     profile.updateProfileSaga
   );
+  yield takeEvery(
+    actionTypes.GETDETAILPOST_REQUEST,
+    listpost.getDetailPostSaga
+  );
 }
 export default rootSaga;
