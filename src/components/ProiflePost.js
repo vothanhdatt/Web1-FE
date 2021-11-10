@@ -15,7 +15,7 @@ function ProfilePost(props) {
   const onHandleDelete = id => {
     props.onHandleDelete(id);
   };
-  if (postList.length > 0) {
+  if (postList) {
     return (
       <>
         {postList.map(post => (
@@ -161,14 +161,14 @@ function ProfilePost(props) {
                         Comments:
                         <div className="ml-1 text-gray-400 font-thin text-ms">
                           {" "}
-                          {post.commentTotal}
+                          10
                         </div>
                       </div>
                       <div className="flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center">
                         Views:{" "}
                         <div className="ml-1 text-gray-400 font-thin text-ms">
                           {" "}
-                          {post.views}
+                          999
                         </div>
                       </div>
                     </div>
@@ -177,7 +177,7 @@ function ProfilePost(props) {
                         Rating:{" "}
                         <div className="ml-1 text-gray-400 font-thin text-ms">
                           {" "}
-                          {post.starAverage + " "}
+                          4.5
                           <i className="fa fa-star" aria-hidden="true"></i>
                         </div>
                       </div>

@@ -101,7 +101,7 @@ export default function CRUDPostReducer(state = initialState, action) {
       newState.isLoading = true;
       newState.isSuccess = true;
       toast("xóa bài viết thành công.!");
-      newState.data = action.payload;
+      // newState.data = action.payload;
       return newState;
 
     case actionTypes.DELETE_POST_FAILURE:
