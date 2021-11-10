@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 ListPost.propTypes = {
   image: PropTypes.string,
@@ -37,7 +38,10 @@ function ListPost(props) {
     return (
       <>
         {slice.map((post) => (
-          <div className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start">
+          <div
+            className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start"
+            key={post.id}
+          >
             <div className="mr-2 w-52 h-32">
               <img
                 className="rounded-lg w-52 h-32"
@@ -45,7 +49,9 @@ function ListPost(props) {
               />
             </div>
             <div className="flex-grow overflow-ellipsis break-words w-1">
-              <p className="font-sans text-xl font-bold py-1">{post.name}</p>
+              <Link to={`/detailpost/${post.id}`}>
+                <p className="font-sans text-xl font-bold py-1">{post.name}</p>
+              </Link>
               <div className="">
                 <p
                   className="text-sm font-sans whitespace-normal overflow-hidden line-clamp-2 overflow-ellipsis break-words"
@@ -55,10 +61,10 @@ function ListPost(props) {
                 </p>
               </div>
               <div className="flex text-xs items-center py-1">
-                <div className="mr-3">
+                <div className="mr-3 w-6 h-6 ">
                   <img
                     className="w-6 h-6 border-2 border-blue-500 rounded-full "
-                    src="https://via.placeholder.com/60x60"
+                    src={post.authorAvatar}
                   />
                 </div>
                 <div className="">
