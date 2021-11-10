@@ -55,6 +55,7 @@ export default function CRUDPostReducer(state = initialState, action) {
       newState.isSuccess = true;
       toast("Cập nhật thành công.!");
       newState.data = action.payload;
+      // window.location.href = routes.profile;
       return newState;
 
     case actionTypes.UPDATE_POST_FAILURE:
@@ -85,7 +86,7 @@ export default function CRUDPostReducer(state = initialState, action) {
       newState.isLoading = false;
       newState.isSuccess = false;
       newState.error = action.error;
-      console.log("ERROR: ", action.error);
+      // console.log("ERROR: ", action.error);
       toast(action.error);
       return newState;
 

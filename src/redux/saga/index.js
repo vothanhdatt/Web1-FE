@@ -46,5 +46,7 @@ function* rootSaga() {
   );
   // DELETE POST
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
+  // UPDATE POST
+  yield takeEvery(actionTypes.UPDATE_POST_REQUEST, CRUDpost.updatePostSaga);
 }
 export default rootSaga;
