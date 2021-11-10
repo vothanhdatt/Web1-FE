@@ -42,6 +42,10 @@ export default {
     }
   },
   //GET POST BY CATEGORY
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   getPostByCategorySaga: function* (action) {
     let payload = action.payload;
     try {

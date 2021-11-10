@@ -22,6 +22,10 @@ function HomePage(props) {
     dispatch(getCategoriesRequest());
   }, []);
   //getPostByCategory
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   const getPostByCategory = useSelector(
     (state) => state.getPostByCategoryReducer.data
   );

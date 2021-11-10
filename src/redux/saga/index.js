@@ -8,6 +8,10 @@ import auth from "./auth";
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   yield takeEvery(
     actionTypes.GETPOSTBYCATEGORY_REQUEST,
     listpost.getPostByCategorySaga
