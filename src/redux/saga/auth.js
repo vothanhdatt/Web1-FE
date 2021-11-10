@@ -10,7 +10,7 @@ export default {
     try {
       let response = yield global.apiService.apiCall(
         "post",
-        "member-update-password",
+        "member-password",
         payload,
         true
       );
