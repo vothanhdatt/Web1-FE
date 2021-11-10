@@ -8,6 +8,7 @@ import env from "../../env";
 import {
   getProfileRequest,
   getListPostByUserRequest,
+  deletePostRequest,
 } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import * as moment from "moment";
@@ -42,7 +43,13 @@ export default function ProfilePage() {
     history.push(routes.createpost);
   };
   //
-  const onHandleDelete = () => {};
+  const onHandleDelete = id => {
+    dispatch(
+      deletePostRequest({
+        postID: id,
+      })
+    );
+  };
   //
   useEffect(() => {
     dispatch(getProfileRequest());
@@ -186,7 +193,7 @@ export default function ProfilePage() {
               <div>
                 <div className="bg-gray-200   justify-center">
                   {/* Component Post*/}
-                  {listPost &&
+                  {listPost ? (
                     listPost.map(post => (
                       <div>
                         <div
@@ -368,7 +375,10 @@ export default function ProfilePage() {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    ))
+                  ) : (
+                    <div></div>
+                  )}
 
                   {/* Component post */}
                 </div>
