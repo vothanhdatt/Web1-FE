@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { changePasswordRequest } from "../../redux/actions";
 import Cookies from "universal-cookie";
-
+//Function Changepassword
 function ChangePassword() {
   let cookie = new Cookies();
   let history = useHistory();
@@ -41,9 +41,8 @@ function ChangePassword() {
       <div className="h-screen flex bg-gray-bg1">
         <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
           <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center">
-            CHANGE PASSWORD 🔐
+            CHANGE PASSWORD🔐{" "}
           </h1>
-
           <form onSubmit={handleSubmit(onSubmitForm)}>
             <div>
               <input
@@ -66,11 +65,11 @@ function ChangePassword() {
                     message: "Password should be maximum length of 24",
                   },
                 })}
-              />
+              />{" "}
               {errors.old_password && (
-                <p className="text-red-600">{errors.old_password.message}</p>
-              )}
-            </div>
+                <p className="text-red-600"> {errors.old_password.message} </p>
+              )}{" "}
+            </div>{" "}
             <div>
               <input
                 type="password"
@@ -92,11 +91,11 @@ function ChangePassword() {
                     message: "Password should be maximum length of 24",
                   },
                 })}
-              />
+              />{" "}
               {errors.new_password && (
-                <p className="text-red-600">{errors.new_password.message}</p>
-              )}
-            </div>
+                <p className="text-red-600"> {errors.new_password.message} </p>
+              )}{" "}
+            </div>{" "}
             <div>
               <input
                 type="password"
@@ -121,26 +120,27 @@ function ChangePassword() {
                     value === new_password.current ||
                     "The passwords do not match",
                 })}
-              />
+              />{" "}
               {errors.confirm_new_password && (
                 <p className="text-red-600">
-                  {errors.confirm_new_password.message}
+                  {" "}
+                  {errors.confirm_new_password.message}{" "}
                 </p>
-              )}
-            </div>
+              )}{" "}
+            </div>{" "}
             <div
               className={`bg-blue-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
             >
-              <button type="submit">Submit</button>
-            </div>
+              <button type="submit"> Submit </button>{" "}
+            </div>{" "}
             <div
               className={`mt-4 bg-red-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
             >
-              <button onClick={onHandleCancel}>Cancel</button>
-            </div>
-          </form>
-        </div>
-      </div>
+              <button onClick={onHandleCancel}> Cancel </button>{" "}
+            </div>{" "}
+          </form>{" "}
+        </div>{" "}
+      </div>{" "}
     </div>
   );
 }

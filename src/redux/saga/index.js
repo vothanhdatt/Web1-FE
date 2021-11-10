@@ -39,5 +39,12 @@ function* rootSaga() {
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
   // CHANGE PASSWORD
   yield takeEvery(actionTypes.CHANGE_PASSWORD_REQUEST, auth.changePasswordSaga);
+  // GET LIST POST BY USER
+  yield takeEvery(
+    actionTypes.GET_LIST_POST_BY_USER_REQUEST,
+    CRUDpost.getListPostByUserSaga
+  );
+  // DELETE POST
+  yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
 }
 export default rootSaga;
