@@ -17,6 +17,7 @@ FeaturePost.defaul = {
  * getFeaturePost
 
  * Call api lấy bài viết nổibat
+Hiển thị ra giao diện
  */
 
 function FeaturePost(props) {
