@@ -46,7 +46,7 @@ export default {
     try {
       let response = yield global.apiService.apiCall(
         "post",
-        "post-update",
+        "update-post",
         payload,
         true
       );
@@ -81,7 +81,7 @@ export default {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
-        "post",
+        "get",
         "get-all-post",
         payload,
         true
