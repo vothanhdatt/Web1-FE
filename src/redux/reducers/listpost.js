@@ -102,7 +102,8 @@ export const getCategoriesReducer = (state = initialState, action) => {
 
 /*
  * getFeaturePost
- * Call api lấy bài viết nổi bật
+
+ * Call api lấy bài viết nổibat
  */
 export const getFeaturePostReducer = (state = initialState, action) => {
   let newState = {};

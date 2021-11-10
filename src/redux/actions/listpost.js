@@ -34,8 +34,10 @@ export const getCategoriesRequest = (payload) => {
 };
 
 /*
+ /*
  * getFeaturePost
- * Call api lấy bài viết nổi bật
+
+ * Call api lấy bài viết nổibat
  */
 export const GETFEATUREPOST_REQUEST = "GETFEATUREPOST_REQUEST";
 export const GETFEATUREPOST_SUCCESS = "GETFEATUREPOST_SUCCESS";
