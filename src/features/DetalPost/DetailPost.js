@@ -47,10 +47,10 @@ function DetailPost(props) {
                 </p>
               </div>
             </div>
-            <div className="px-2">
+            <div className="px-2 w-auto">
               <img
-                className="mx-auto my-10 rounded-xl"
-                src={getDetailPost.image}
+                className="mx-auto my-10 rounded-xl w-auto"
+                src={`http://127.0.0.1:8000/storage/${getDetailPost.image}`}
               />
             </div>
             <div className="px-2">
