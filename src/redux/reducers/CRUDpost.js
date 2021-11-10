@@ -65,6 +65,29 @@ export default function CRUDPostReducer(state = initialState, action) {
       console.log("ERROR: ", action.error);
       toast(action.error);
       return newState;
+
+    //GET LIST POST BY USER
+    case actionTypes.GET_LIST_POST_BY_USER_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.GET_LIST_POST_BY_USER_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      newState.data = action.payload;
+      return newState;
+
+    case actionTypes.GET_LIST_POST_BY_USER_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      console.log("ERROR: ", action.error);
+      toast(action.error);
+      return newState;
     default:
       return state;
   }

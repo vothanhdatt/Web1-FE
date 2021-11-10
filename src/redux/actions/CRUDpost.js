@@ -20,3 +20,14 @@ export function updatePostRequest(payload) {
     payload: payload,
   };
 }
+// GET LIST POST BY USER
+export const GET_LIST_POST_BY_USER_REQUEST = "GET_LIST_POST_BY_USER_REQUEST";
+export const GET_LIST_POST_BY_USER_SUCCESS = "GET_LIST_POST_BY_USER_SUCCESS";
+export const GET_LIST_POST_BY_USER_FAILURE = "GET_LIST_POST_BY_USER_FAILURE";
+
+export function getListPostByUserRequest(payload) {
+  return {
+    type: GET_LIST_POST_BY_USER_REQUEST,
+    payload: payload,
+  };
+}
