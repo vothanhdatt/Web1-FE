@@ -2,6 +2,9 @@ import { takeEvery } from "redux-saga/effects";
 import * as actionTypes from "../actions";
 import listpost from "./listpost";
 import profile from "./profile";
+import getdata from "./getdata";
+import CRUDpost from "./CRUDpost";
+import auth from "./auth";
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
@@ -27,5 +30,14 @@ function* rootSaga() {
     actionTypes.GETDETAILPOST_REQUEST,
     listpost.getDetailPostSaga
   );
+  // GET ALL CATEGORIES
+  yield takeEvery(
+    actionTypes.GET_ALL_CATEGORIE_REQUEST,
+    getdata.getAllCategorieSaga
+  );
+  // CREATE POST
+  yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
+  // CHANGE PASSWORD
+  yield takeEvery(actionTypes.CHANGE_PASSWORD_REQUEST, auth.changePasswordSaga);
 }
 export default rootSaga;
