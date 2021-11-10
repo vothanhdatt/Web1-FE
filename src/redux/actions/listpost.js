@@ -59,6 +59,9 @@ export const getFeaturePostRequest = (payload) => {
 };
 
 //detail póst
+/* GET detailPost
+ *   Call api lấy chi tiết bài viết
+ */
 export const GETDETAILPOST_REQUEST = "GETDETAILPOST_REQUEST";
 export const GETDETAILPOST_SUCCESS = "GETDETAILPOST_SUCCESS";
 export const GETDETAILPOST_FAILURE = "GETDETAILPOST_FAILURE";

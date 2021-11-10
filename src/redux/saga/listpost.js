@@ -162,7 +162,9 @@ export default {
     }
   },
   //GET DETAIL POST
-
+  /* GET detailPost
+   *   Call api lấy chi tiết bài viết
+   */
   getDetailPostSaga: function* (action) {
     let payload = action.payload;
     try {

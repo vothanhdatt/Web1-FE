@@ -34,6 +34,9 @@ function* rootSaga() {
     actionTypes.UPDATE_PROFILE_REQUEST,
     profile.updateProfileSaga
   );
+  /* GET detailPost
+   *   Call api lấy chi tiết bài viết
+   */
   yield takeEvery(
     actionTypes.GETDETAILPOST_REQUEST,
     listpost.getDetailPostSaga
