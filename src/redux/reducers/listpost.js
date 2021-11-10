@@ -142,7 +142,9 @@ export const getFeaturePostReducer = (state = initialState, action) => {
       return state;
   }
 };
-
+/* GET detailPost
+ *   Call api lấy chi tiết bài viết
+ */
 export const getDetailPostReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
