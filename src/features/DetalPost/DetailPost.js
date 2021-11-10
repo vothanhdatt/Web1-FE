@@ -4,11 +4,12 @@ import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPostRequest } from "../../redux/actions";
 import * as moment from "moment";
+import env from "../../env";
 
 function DetailPost(props) {
   const dispatch = useDispatch();
   //detail post
-  const getDetailPost = useSelector((state) => state.getDetailPostReducer.data);
+  const getDetailPost = useSelector(state => state.getDetailPostReducer.data);
   useEffect(() => {
     dispatch(
       getDetailPostRequest({
@@ -50,7 +51,7 @@ function DetailPost(props) {
             <div className="px-2 w-auto">
               <img
                 className="mx-auto my-10 rounded-xl w-auto"
-                src={`http://127.0.0.1:8000/storage/${getDetailPost.image}`}
+                src={env.URL_IMAGE + getDetailPost.image}
               />
             </div>
             <div className="px-2">
