@@ -31,3 +31,14 @@ export function getListPostByUserRequest(payload) {
     payload: payload,
   };
 }
+//DELETE POST
+export const DELETE_POST_REQUEST = "DELETE_POST_REQUEST";
+export const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS";
+export const DELETE_POST_FAILURE = "DELETE_POST_FAILURE";
+
+export function deletePostRequest(payload) {
+  return {
+    type: DELETE_POST_REQUEST,
+    payload: payload,
+  };
+}
