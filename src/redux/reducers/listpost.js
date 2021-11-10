@@ -100,6 +100,10 @@ export const getCategoriesReducer = (state = initialState, action) => {
   }
 };
 
+/*
+ * getFeaturePost
+ * Call api lấy bài viết nổi bật
+ */
 export const getFeaturePostReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {

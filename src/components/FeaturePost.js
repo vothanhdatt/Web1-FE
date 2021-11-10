@@ -13,6 +13,10 @@ FeaturePost.defaul = {
   description: "",
   name: "",
 };
+/*
+ * getFeaturePost
+ * Call api lấy bài viết nổi bật
+ */
 
 function FeaturePost(props) {
   const { featurePost } = props;

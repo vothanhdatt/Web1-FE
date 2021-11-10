@@ -33,7 +33,10 @@ export const getCategoriesRequest = (payload) => {
   };
 };
 
-//get category
+/*
+ * getFeaturePost
+ * Call api lấy bài viết nổi bật
+ */
 export const GETFEATUREPOST_REQUEST = "GETFEATUREPOST_REQUEST";
 export const GETFEATUREPOST_SUCCESS = "GETFEATUREPOST_SUCCESS";
 export const GETFEATUREPOST_FAILURE = "GETFEATUREPOST_FAILURE";
