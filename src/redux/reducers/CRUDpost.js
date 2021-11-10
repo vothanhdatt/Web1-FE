@@ -88,6 +88,29 @@ export default function CRUDPostReducer(state = initialState, action) {
       console.log("ERROR: ", action.error);
       toast(action.error);
       return newState;
+
+    //DELETE POST
+    case actionTypes.DELETE_POST_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.DELETE_POST_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      toast("xóa bài viết thành công.!");
+      // newState.data = action.payload;
+      return newState;
+
+    case actionTypes.DELETE_POST_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
     default:
       return state;
   }

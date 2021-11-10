@@ -44,5 +44,7 @@ function* rootSaga() {
     actionTypes.GET_LIST_POST_BY_USER_REQUEST,
     CRUDpost.getListPostByUserSaga
   );
+  // DELETE POST
+  yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
 }
 export default rootSaga;
