@@ -49,8 +49,8 @@ function ChangePassword() {
               <input
                 type="password"
                 className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
-                id="password"
-                name="password"
+                id="old_password"
+                name="old_password"
                 placeholder="Your Password"
                 {...register("old_password", {
                   required: {
@@ -104,7 +104,7 @@ function ChangePassword() {
                 id="confirm_new_password"
                 name="confirm_new_password"
                 placeholder="Confirm New Password"
-                {...register("re_new_password", {
+                {...register("confirm_new_password", {
                   required: {
                     value: true,
                     message: "The passwords is required",
@@ -122,8 +122,10 @@ function ChangePassword() {
                     "The passwords do not match",
                 })}
               />
-              {errors.re_new_password && (
-                <p className="text-red-600">{errors.re_new_password.message}</p>
+              {errors.confirm_new_password && (
+                <p className="text-red-600">
+                  {errors.confirm_new_password.message}
+                </p>
               )}
             </div>
             <div

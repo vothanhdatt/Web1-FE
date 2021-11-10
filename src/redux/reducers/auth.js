@@ -29,7 +29,7 @@ export default function authReducer(state = initialState, action) {
 
       newState.data = action.payload;
       toast("Đổi mật khẩu thành công!");
-      cookie.remove("_token");
+      // cookie.remove("_token");
       window.location.href = routes.login;
 
       return newState;
