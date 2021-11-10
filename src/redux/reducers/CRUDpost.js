@@ -42,6 +42,52 @@ export default function CRUDPostReducer(state = initialState, action) {
       toast(action.error);
       return newState;
 
+    //UPDATE POST
+    case actionTypes.UPDATE_POST_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.UPDATE_POST_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      toast("Cập nhật thành công.!");
+      newState.data = action.payload;
+      return newState;
+
+    case actionTypes.UPDATE_POST_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      console.log("ERROR: ", action.error);
+      toast(action.error);
+      return newState;
+
+    //GET LIST POST BY USER
+    case actionTypes.GET_LIST_POST_BY_USER_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.GET_LIST_POST_BY_USER_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      newState.data = action.payload;
+      return newState;
+
+    case actionTypes.GET_LIST_POST_BY_USER_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      console.log("ERROR: ", action.error);
+      toast(action.error);
+      return newState;
     default:
       return state;
   }

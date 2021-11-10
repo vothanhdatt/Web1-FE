@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import env from "../env";
 
 ListPost.propTypes = {
   image: PropTypes.string,
@@ -37,7 +38,7 @@ function ListPost(props) {
     const slice = post.slice(0, noOfElement);
     return (
       <>
-        {slice.map((post) => (
+        {slice.map(post => (
           <div
             className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start"
             key={post.id}
@@ -45,7 +46,7 @@ function ListPost(props) {
             <div className="mr-2 w-52 h-32">
               <img
                 className="rounded-lg w-52 h-32"
-                src={`http://127.0.0.1:8000/storage/${post.image}`}
+                src={env.URL_IMAGE + post.image}
               />
             </div>
             <div className="flex-grow overflow-ellipsis break-words w-1">
