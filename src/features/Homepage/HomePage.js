@@ -15,6 +15,10 @@ function HomePage(props) {
   const dispatch = useDispatch();
 
   //listCategories
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   const getlistCategories = useSelector(
     (state) => state.getCategoriesReducer.data
   );

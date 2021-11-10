@@ -26,6 +26,10 @@ export const getPostByCategoryRequest = (payload) => {
   };
 };
 //get category
+//GET  CATEGORIES
+/* GET aLL  CATEGORIES
+ * Call Call api tất cả category
+ */
 export const GETCATEGORIES_REQUEST = "GETCATEGORIES_REQUEST";
 export const GETCATEGORIES_SUCCESS = "GETCATEGORIES_SUCCESS";
 export const GETCATEGORIES_FAILURE = "GETCATEGORIES_FAILURE";
