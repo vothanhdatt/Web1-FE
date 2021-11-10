@@ -4,6 +4,7 @@ import listpost from "./listpost";
 import profile from "./profile";
 import getdata from "./getdata";
 import CRUDpost from "./CRUDpost";
+import auth from "./auth";
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
@@ -36,5 +37,7 @@ function* rootSaga() {
   );
   // CREATE POST
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
+  // CHANGE PASSWORD
+  yield takeEvery(actionTypes.CHANGE_PASSWORD_REQUEST, auth.changePasswordSaga);
 }
 export default rootSaga;
