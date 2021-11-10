@@ -1,3 +1,4 @@
+// FEATURE UPDATE PROFILE
 // Packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -28,7 +29,7 @@ function UpdateProfile(props) {
     watch,
   } = useForm();
 
-  const profile = useSelector((state) => state.getProfileReducer.data);
+  const profile = useSelector(state => state.getProfileReducer.data);
   //
   useEffect(() => {
     dispatch(getProfileRequest());
@@ -37,7 +38,7 @@ function UpdateProfile(props) {
   useEffect(() => {
     register("avatar", {
       required: { value: false },
-      validate: (value) =>
+      validate: value =>
         value.type === "image/png" ||
         value.type === "image/jpeg" ||
         " TYPE IVAILID!",
@@ -45,7 +46,7 @@ function UpdateProfile(props) {
   }, [register]);
 
   //
-  const onAvatarStateChange = (e) => {
+  const onAvatarStateChange = e => {
     if (e.target.files[0]) {
       //setChangeAvt(true);
       setValue("avatar", e.target.files[0]);
@@ -53,7 +54,7 @@ function UpdateProfile(props) {
   };
   const editorContent = watch("avatar");
   //Submit Form
-  const onSubmitForm = (formData) => {
+  const onSubmitForm = formData => {
     if (!editorContent) {
       setValue("avatar", "");
     }
@@ -111,7 +112,7 @@ function UpdateProfile(props) {
                             className="hidden"
                             name="avatar"
                             id="avatar"
-                            onInputCapture={(e) => {
+                            onInputCapture={e => {
                               if (e.target.files[0]) {
                                 if (
                                   e.target.files[0].type === "image/png" ||
@@ -121,7 +122,7 @@ function UpdateProfile(props) {
                                   let file = e.target.files[0];
                                   if (file) {
                                     reader.readAsDataURL(e.target.files[0]);
-                                    reader.onload = (e) => {
+                                    reader.onload = e => {
                                       setAvatar(e.target.result);
                                     };
                                   }
@@ -134,7 +135,7 @@ function UpdateProfile(props) {
                                 }
                               }
                             }}
-                            onChange={(e) => {
+                            onChange={e => {
                               onAvatarStateChange(e);
                             }}
                           />
@@ -256,7 +257,7 @@ function UpdateProfile(props) {
                             value: true,
                             message: "Birthday required.",
                           },
-                          validate: (value) =>
+                          validate: value =>
                             Date.parse(value) <= Date.now() ||
                             "Birthday Invailid.!",
                         })}
