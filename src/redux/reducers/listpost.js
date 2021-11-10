@@ -41,6 +41,10 @@ export const featurepostReducer = (state = initialState, action) => {
       return state;
   }
 };
+/* getPostByCategory
+ * Call Call api tất cả bài viết theo category
+ * Lấy tất cả bà viết
+ */
 export const getPostByCategoryReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {

@@ -11,6 +11,10 @@ export const featurepostRequest = (payload) => {
 };
 
 //get post by category
+/* getPostByCategory
+ * Call Call api tất cả bài viết theo category
+ * Lấy tất cả bà viết
+ */
 export const GETPOSTBYCATEGORY_REQUEST = "GETPOSTBYCATEGORY_REQUEST";
 export const GETPOSTBYCATEGORY_SUCCESS = "GETPOSTBYCATEGORY_SUCCESS";
 export const GETPOSTBYCATEGORY_FAILURE = "GETPOSTBYCATEGORY_FAILURE";
