@@ -5,6 +5,7 @@ import env from "../env";
 /* getPostByCategory
  * Call Call api tất cả bài viết theo category
  * Lấy tất cả bà viết
+ * Hiển thị ra giao diện
  */
 ListPost.propTypes = {
   image: PropTypes.string,

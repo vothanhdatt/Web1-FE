@@ -49,6 +49,7 @@ function HomePage(props) {
  * getFeaturePost
 
  * Call api lấy bài viết nổibat
+  Hiển thị ra giao diện
  */
   const getFeaturePost = useSelector(
     (state) => state.getFeaturePostReducer.data
