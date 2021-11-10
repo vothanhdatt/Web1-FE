@@ -4,18 +4,19 @@ import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPostRequest } from "../../redux/actions";
 import * as moment from "moment";
+import env from "../../env";
 
 function DetailPost(props) {
   const dispatch = useDispatch();
   //detail post
-  const getDetailPost = useSelector((state) => state.getDetailPostReducer.data);
+  const getDetailPost = useSelector(state => state.getDetailPostReducer.data);
   useEffect(() => {
     dispatch(
       getDetailPostRequest({
-        postID: 1,
+        postID: props.match.params.id,
       })
     );
-  }, []);
+  }, [props.match.params.id]);
 
   if (getDetailPost) {
     return (
@@ -30,7 +31,7 @@ function DetailPost(props) {
               <div className="w-16 h-16 ">
                 <img
                   className="w-16 border-2 border-blue-500 rounded-full h-16"
-                  src="https://via.placeholder.com/60"
+                  src={getDetailPost.authorAvatar}
                 />
               </div>
               <div className="pl-2 mb-1 whitespace-normal text-sm  ">
@@ -47,11 +48,10 @@ function DetailPost(props) {
                 </p>
               </div>
             </div>
-            <div className="px-2">
+            <div className="px-2 w-auto">
               <img
-                className="mx-auto my-10 rounded-xl"
-                src="https://via.placeholder.com/680x450"
-                // src={getDetailPost.image}
+                className="mx-auto my-10 rounded-xl w-auto"
+                src={env.URL_IMAGE + getDetailPost.image}
               />
             </div>
             <div className="px-2">
@@ -72,7 +72,7 @@ function DetailPost(props) {
     );
   } else {
     return (
-      <div class="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
+      <div className="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
         <div className="animate-spin rounded-full h-40 w-40 border-t-4 border-b-4 border-purple-500"></div>
       </div>
     );

@@ -7,8 +7,10 @@ const routes = {
   Login: "/Login",
   Register: "/Register",
   Pass: "/Pass",
-  detailpost: "/detailpost",
+  detailpost: "/detailpost/:id",
   updateprofile: "/updateprofile",
+  changepassword: "/changepassword",
+  updatepost: "/updatepost/",
 };
 
 export default routes;
