@@ -8,6 +8,7 @@ import env from "../../env";
 
 /* GET detailPost
  *   Call api lấy chi tiết bài viết
+ * Hiển thị ra giao diện
  */
 function DetailPost(props) {
   const dispatch = useDispatch();
