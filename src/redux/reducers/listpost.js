@@ -74,6 +74,10 @@ export const getPostByCategoryReducer = (state = initialState, action) => {
       return state;
   }
 };
+//GET  CATEGORIES
+/* GET aLL  CATEGORIES
+ * Call Call api tất cả category
+ */
 export const getCategoriesReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {

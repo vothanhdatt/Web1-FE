@@ -16,6 +16,10 @@ function* rootSaga() {
     actionTypes.GETPOSTBYCATEGORY_REQUEST,
     listpost.getPostByCategorySaga
   );
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   yield takeEvery(
     actionTypes.GETCATEGORIES_REQUEST,
     listpost.getCategoriesSaga

@@ -82,6 +82,9 @@ export default {
     }
   },
   //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   getCategoriesSaga: function* (action) {
     let payload = action.payload;
     try {

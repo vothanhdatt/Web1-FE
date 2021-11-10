@@ -15,6 +15,10 @@ function Header(props) {
   const onchange = (e) => {
     props.parenCallBack(e.target.value);
   };
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   const { listCategories } = props;
   return (
     <nav className="navbar">
