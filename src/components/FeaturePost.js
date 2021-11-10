@@ -15,7 +15,8 @@ FeaturePost.defaul = {
 };
 /*
  * getFeaturePost
- * Call api lấy bài viết nổi bật
+
+ * Call api lấy bài viết nổibat
  */
 
 function FeaturePost(props) {

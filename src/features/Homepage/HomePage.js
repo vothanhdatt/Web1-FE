@@ -38,9 +38,10 @@ function HomePage(props) {
     );
   }, [category]);
   /*
-   * getFeaturePost
-   * Call api lấy bài viết nổi bật
-   */
+ * getFeaturePost
+
+ * Call api lấy bài viết nổibat
+ */
   const getFeaturePost = useSelector(
     (state) => state.getFeaturePostReducer.data
   );
