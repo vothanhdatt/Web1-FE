@@ -4,7 +4,7 @@ import "../css/Header.css";
 import route from "../constant/routes";
 import { Link } from "react-router-dom";
 
-// Header
+//* Header
 Header.propTypes = {};
 
 function Header(props) {
