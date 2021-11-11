@@ -8,9 +8,17 @@ Header.propTypes = {};
 
 function Header(props) {
   //onchange get value option
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   const onchange = (e) => {
     props.parenCallBack(e.target.value);
   };
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   const { listCategories } = props;
   return (
     <nav className="navbar">

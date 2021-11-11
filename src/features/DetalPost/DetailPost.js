@@ -6,10 +6,14 @@ import { getDetailPostRequest } from "../../redux/actions";
 import * as moment from "moment";
 import env from "../../env";
 
+/* GET detailPost
+ *   Call api lấy chi tiết bài viết
+ * Hiển thị ra giao diện
+ */
 function DetailPost(props) {
   const dispatch = useDispatch();
   //detail post
-  const getDetailPost = useSelector(state => state.getDetailPostReducer.data);
+  const getDetailPost = useSelector((state) => state.getDetailPostReducer.data);
   useEffect(() => {
     dispatch(
       getDetailPostRequest({

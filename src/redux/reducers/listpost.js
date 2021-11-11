@@ -41,6 +41,10 @@ export const featurepostReducer = (state = initialState, action) => {
       return state;
   }
 };
+/* getPostByCategory
+ * Call Call api tất cả bài viết theo category
+ * Lấy tất cả bà viết
+ */
 export const getPostByCategoryReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
@@ -70,6 +74,10 @@ export const getPostByCategoryReducer = (state = initialState, action) => {
       return state;
   }
 };
+//GET  CATEGORIES
+/* GET aLL  CATEGORIES
+ * Call Call api tất cả category
+ */
 export const getCategoriesReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
@@ -100,6 +108,11 @@ export const getCategoriesReducer = (state = initialState, action) => {
   }
 };
 
+/*
+ * getFeaturePost
+
+ * Call api lấy bài viết nổibat
+ */
 export const getFeaturePostReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
@@ -129,7 +142,9 @@ export const getFeaturePostReducer = (state = initialState, action) => {
       return state;
   }
 };
-
+/* GET detailPost
+ *   Call api lấy chi tiết bài viết
+ */
 export const getDetailPostReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {

@@ -15,6 +15,10 @@ function HomePage(props) {
   const dispatch = useDispatch();
 
   //listCategories
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   const getlistCategories = useSelector(
     (state) => state.getCategoriesReducer.data
   );
@@ -22,6 +26,10 @@ function HomePage(props) {
     dispatch(getCategoriesRequest());
   }, []);
   //getPostByCategory
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   const getPostByCategory = useSelector(
     (state) => state.getPostByCategoryReducer.data
   );
@@ -37,7 +45,12 @@ function HomePage(props) {
       })
     );
   }, [category]);
-  //feature post
+  /*
+ * getFeaturePost
+
+ * Call api lấy bài viết nổibat
+  Hiển thị ra giao diện
+ */
   const getFeaturePost = useSelector(
     (state) => state.getFeaturePostReducer.data
   );
