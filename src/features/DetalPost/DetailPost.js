@@ -6,11 +6,7 @@ import { getDetailPostRequest } from "../../redux/actions";
 import * as moment from "moment";
 import env from "../../env";
 import FeaturesPost from "../../components/FeaturePost";
-import {
-  getCategoriesRequest,
-  getFeaturePostRequest,
-  getPostByCategoryRequest,
-} from "../../redux/actions";
+import { getRelatedPostRequest } from "../../redux/actions";
 
 /* GET detailPost
  *   Call api lấy chi tiết bài viết
@@ -31,12 +27,16 @@ function DetailPost(props) {
   /* Call api lấy bài viết Lien quan
   Hiển thị ra giao diện
  */
-  const getFeaturePost = useSelector(
-    (state) => state.getFeaturePostReducer.data
+  const getRelatedPost = useSelector(
+    (state) => state.getRelatedPostReducer.data
   );
   useEffect(() => {
-    dispatch(getFeaturePostRequest());
-  }, []);
+    dispatch(
+      getRelatedPostRequest({
+        post_id: props.match.params.id,
+      })
+    );
+  }, [props.match.params.id]);
 
   if (getDetailPost) {
     return (
@@ -92,10 +92,10 @@ function DetailPost(props) {
           </div>
           <div>
             <div className="pl-2 mt-14 font-sans text-2xl font-bold h3">
-              Bài Viết Noi bat
+              Bài Viết Liên Quan
             </div>
             <div className="flex flex-row mb-1 overflow-auto lg:flex-col">
-              <FeaturesPost featurePost={getFeaturePost} />
+              <FeaturesPost featurePost={getRelatedPost} />
             </div>
           </div>
         </div>
