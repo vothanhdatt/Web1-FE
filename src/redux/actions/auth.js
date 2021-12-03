@@ -9,3 +9,14 @@ export const changePasswordRequest = payload => {
     payload: payload,
   };
 };
+//LOGIN
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+export const loginRequest = payload => {
+  return {
+    type: LOGIN_REQUEST,
+    payload: payload,
+  };
+};
