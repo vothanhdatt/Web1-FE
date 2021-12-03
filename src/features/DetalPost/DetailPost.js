@@ -91,7 +91,7 @@ function DetailPost(props) {
             </div>
           </div>
           <div>
-            <div className="pl-2 mt-14 font-sans text-2xl font-bold h3">
+            <div className="pl-2 mt-60 font-sans text-2xl font-bold h3">
               Bài Viết Liên Quan
             </div>
             <div className="flex flex-row mb-1 overflow-auto lg:flex-col">
