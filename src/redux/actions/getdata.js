@@ -9,6 +9,17 @@ export const getAllCategorieRequest = (payload) => {
     payload: payload,
   };
 };
+//GET FeatureMember
+export const GET_FEATURE_MEMBER_REQUEST = "GET_FEATURE_MEMBER_REQUEST";
+export const GET_FEATURE_MEMBER_SUCCESS = "GET_FEATURE_MEMBER_SUCCESS";
+export const GET_FEATURE_MEMBER_FAILURE = "GET_FEATURE_MEMBER_FAILURE";
+
+export const getFeatureMemberRequest = (payload) => {
+  return {
+    type: GET_FEATURE_MEMBER_REQUEST,
+    payload: payload,
+  };
+};
 //GET Related Post
 export const GET_RELATED_POST_REQUEST = "GET_RELATED_POST_REQUEST";
 export const GET_RELATED_POST_SUCCESS = "GET_RELATED_POST_SUCCESS";

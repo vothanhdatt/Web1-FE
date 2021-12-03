@@ -73,3 +73,34 @@ export const getRelatedPostReducer = (state = initialState, action) => {
       return state;
   }
 };
+//get featureMember
+export const getFeatureMemberReducer = (state = initialState, action) => {
+  let newState = {};
+  switch (action.type) {
+    //GET  featureMember
+    case actionTypes.GET_FEATURE_MEMBER_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.GET_FEATURE_MEMBER_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+
+      newState.data = action.payload;
+
+      return newState;
+
+    case actionTypes.GET_FEATURE_MEMBER_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
+    default:
+      return state;
+  }
+};
