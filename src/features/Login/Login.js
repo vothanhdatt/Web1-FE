@@ -81,7 +81,8 @@ function Login() {
             <div>
               <button type="submit" 
               className={`bg-blue-500 py-2 px-36 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
-              >Login</button>{" "}
+              >
+                Login </button>{" "}
             </div>{" "}
             <div className="flex justify-center items-center mt-6">
               <button
