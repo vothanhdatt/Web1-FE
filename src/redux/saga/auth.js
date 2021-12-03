@@ -41,4 +41,40 @@ export default {
       });
     }
   },
+  loginSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "member-login",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.isSuccess) {
+          yield put({
+            type: actionType.LOGIN_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.LOGIN_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.LOGIN_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.LOGIN_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
 };

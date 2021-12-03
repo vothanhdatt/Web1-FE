@@ -129,7 +129,35 @@ export const getFeaturePostReducer = (state = initialState, action) => {
       return state;
   }
 };
+export const getLoginReducer = (state = initialState, action) => {
+  let newState = {};
+  switch (action.type) {
+    case actionTypes.LOGIN_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
 
+      return newState;
+
+    case actionTypes.LOGIN_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+
+      newState.data = action.payload;
+
+      return newState;
+
+    case actionTypes.LOGIN_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
+    default:
+      return state;
+  }
+};
 export const getDetailPostReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {

@@ -42,7 +42,34 @@ export default function authReducer(state = initialState, action) {
       toast(action.error);
       return newState;
 
+      //Login
+      case actionTypes.LOGIN_REQUEST:
+        newState = _.cloneDeep(state);
+        newState.isLoading = true;
+  
+        return newState;
+  
+      case actionTypes.LOGIN_SUCCESS:
+        newState = _.cloneDeep(state);
+        newState.isLoading = false;
+        newState.isSuccess = true;
+        console.log("ajajjaa" + action.payload);
+        newState.data = action.payload;
+        cookie.set("_token", action.payload);
+        toast("Đăng nhập thành công!");
+        window.location.href = routes.homepage;
+  
+        return newState;
+  
+      case actionTypes.LOGIN_FAILURE:
+        newState = _.cloneDeep(state);
+        newState.isLoading = false;
+        newState.isSuccess = false;
+        newState.error = action.error;
+        toast(action.error);
+        return newState;
+
     default:
       return state;
   }
-}
+};

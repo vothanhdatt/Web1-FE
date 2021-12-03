@@ -10,7 +10,7 @@ const Register = () => {
     // let firtname = e.target.elements.firtname ? .value;
 
     // console.log(email, password);
-  };
+  };    
   return (
     // Form Register
     <div>
@@ -91,14 +91,14 @@ const Register = () => {
                 id="policy"
               />
             </div>{" "}
-            <div
-              className={`text-center bg-green-600 py-2 px-10 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
+            <div 
+              className={`text-center bg-green-600 py-2 px-24 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
             >
               <Link to="./Login"> Register </Link>{" "}
             </div>
             <div className="flex justify-center items-center mt-6">
               <button
-                className={` bg-blue-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
+                className={` bg-blue-500 py-2 px-24 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
               >
                 <Link to="./Login"> Login </Link>{" "}
               </button>{" "}

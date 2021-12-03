@@ -5,6 +5,8 @@ import profile from "./profile";
 import getdata from "./getdata";
 import CRUDpost from "./CRUDpost";
 import auth from "./auth";
+import Login from "../../features/Login/Login";
+
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
@@ -34,6 +36,11 @@ function* rootSaga() {
   yield takeEvery(
     actionTypes.GET_ALL_CATEGORIE_REQUEST,
     getdata.getAllCategorieSaga
+  );
+  //LOGIN
+  yield takeEvery(
+    actionTypes.LOGIN_REQUEST,
+    auth.loginSaga
   );
   // CREATE POST
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
