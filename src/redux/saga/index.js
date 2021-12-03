@@ -46,6 +46,16 @@ function* rootSaga() {
     actionTypes.GET_ALL_CATEGORIE_REQUEST,
     getdata.getAllCategorieSaga
   );
+  // GET ALL CATEGORIES
+  yield takeEvery(
+    actionTypes.GET_RELATED_POST_REQUEST,
+    getdata.getRelatedPostSaga
+  );
+  // get featureMember
+  yield takeEvery(
+    actionTypes.GET_FEATURE_MEMBER_REQUEST,
+    getdata.getFeatureMemberSaga
+  );
   // CREATE POST
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
   // CHANGE PASSWORD
