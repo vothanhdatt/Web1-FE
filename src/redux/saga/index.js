@@ -71,5 +71,7 @@ function* rootSaga() {
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
   // UPDATE POST
   yield takeEvery(actionTypes.UPDATE_POST_REQUEST, CRUDpost.updatePostSaga);
+  //POST FILTER
+  yield takeEvery(actionTypes.POST_FILTER_REQUEST, CRUDpost.postFilterSaga);
 }
 export default rootSaga;
