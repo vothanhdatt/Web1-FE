@@ -46,6 +46,11 @@ function* rootSaga() {
     actionTypes.GET_ALL_CATEGORIE_REQUEST,
     getdata.getAllCategorieSaga
   );
+  // get featureMember
+  yield takeEvery(
+    actionTypes.GET_FEATURE_MEMBER_REQUEST,
+    getdata.getFeatureMemberSaga
+  );
   // CREATE POST
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
   // CHANGE PASSWORD
@@ -56,10 +61,7 @@ function* rootSaga() {
     CRUDpost.getListPostByUserSaga
   );
   //LOGIN
-  yield takeEvery(
-    actionTypes.LOGIN_REQUEST,
-    auth.loginSaga
-  );
+  yield takeEvery(actionTypes.LOGIN_REQUEST, auth.loginSaga);
   // DELETE POST
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
   // UPDATE POST

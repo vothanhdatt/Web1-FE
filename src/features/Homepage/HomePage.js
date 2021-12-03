@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import FeaturePost from "../../components/FeaturePost";
+import FeatureMember from "../../components/FeatureMember";
 import ListPost from "../../components/ListPost";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getCategoriesRequest,
   getFeaturePostRequest,
   getPostByCategoryRequest,
+  getFeatureMemberRequest,
 } from "../../redux/actions";
 import Header from "../../components/Header";
 
@@ -13,7 +15,13 @@ HomePage.propTypes = {};
 
 function HomePage(props) {
   const dispatch = useDispatch();
-
+  //get featureMember
+  const getFeatureMember = useSelector(
+    (state) => state.getFeatureMemberReducer.data
+  );
+  useEffect(() => {
+    dispatch(getFeatureMemberRequest());
+  }, []);
   //listCategories
   //GET  CATEGORIES
   /* GET aLL  CATEGORIES
@@ -70,12 +78,12 @@ function HomePage(props) {
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
               <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
                 Bài Viết Nổi Bật
-                <FeaturePost featurePost={getFeaturePost} />
               </h1>
-              <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
-                Bài Viết Nổi Bật
-                <FeaturePost featurePost={getFeaturePost} />
+              <FeaturePost featurePost={getFeaturePost} />
+              <h1 className="pb-1 pl-2 mt-5 text-lg font-bold text-left">
+                Thành Viên Nổi Bật
               </h1>
+              <FeatureMember listUser={getFeatureMember} />
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
             </div>
             <div className="col-span-2">
