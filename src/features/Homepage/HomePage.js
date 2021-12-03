@@ -65,9 +65,13 @@ function HomePage(props) {
             listCategories={getlistCategories}
             parenCallBack={callbackFuntion}
           />
-          <div className="grid-cols-3 grid-rows-1 gap-4 mx-auto max-w-7xl lg:grid my-7 ">
+          <div className="grid-cols-3 grid-rows-1 gap-4 mx-auto max-w-5xl lg:grid my-7 ">
             <div className="col-span-1">
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
+              <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                Bài Viết Nổi Bật
+                <FeaturePost featurePost={getFeaturePost} />
+              </h1>
               <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
                 Bài Viết Nổi Bật
                 <FeaturePost featurePost={getFeaturePost} />
