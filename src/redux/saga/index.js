@@ -66,7 +66,15 @@ function* rootSaga() {
     CRUDpost.getListPostByUserSaga
   );
   //LOGIN
-  yield takeEvery(actionTypes.LOGIN_REQUEST, auth.loginSaga);
+  yield takeEvery(
+    actionTypes.LOGIN_REQUEST,
+    auth.loginSaga
+  );
+   //REGISTER
+   yield takeEvery(
+    actionTypes.REGISTER_REQUEST,
+    auth.registerSaga
+  );
   // DELETE POST
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
   // UPDATE POST
