@@ -41,6 +41,38 @@ export const getAllCategorieReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+//get related post
+export const getRelatedPostReducer = (state = initialState, action) => {
+  let newState = {};
+  switch (action.type) {
+    //GET ALL CATEGORIE
+    case actionTypes.GET_RELATED_POST_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.GET_RELATED_POST_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+
+      newState.data = action.payload;
+
+      return newState;
+
+    case actionTypes.GET_RELATED_POST_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
+    default:
+      return state;
+  }
+};
 //get featureMember
 export const getFeatureMemberReducer = (state = initialState, action) => {
   let newState = {};

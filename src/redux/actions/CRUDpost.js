@@ -42,3 +42,15 @@ export function deletePostRequest(payload) {
     payload: payload,
   };
 }
+
+//POST FILTER
+export const POST_FILTER_REQUEST = "POST_FILTER_REQUEST";
+export const POST_FILTER_SUCCESS = "POST_FILTER_SUCCESS";
+export const POST_FILTER_FAILURE = "POST_FILTER_FAILURE";
+
+export function postFilterRequest(payload) {
+  return {
+    type: POST_FILTER_REQUEST,
+    payload: payload,
+  };
+}

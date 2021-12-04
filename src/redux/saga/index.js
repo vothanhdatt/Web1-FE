@@ -46,6 +46,11 @@ function* rootSaga() {
     actionTypes.GET_ALL_CATEGORIE_REQUEST,
     getdata.getAllCategorieSaga
   );
+  // GET ALL CATEGORIES
+  yield takeEvery(
+    actionTypes.GET_RELATED_POST_REQUEST,
+    getdata.getRelatedPostSaga
+  );
   // get featureMember
   yield takeEvery(
     actionTypes.GET_FEATURE_MEMBER_REQUEST,
@@ -61,10 +66,20 @@ function* rootSaga() {
     CRUDpost.getListPostByUserSaga
   );
   //LOGIN
-  yield takeEvery(actionTypes.LOGIN_REQUEST, auth.loginSaga);
+  yield takeEvery(
+    actionTypes.LOGIN_REQUEST,
+    auth.loginSaga
+  );
+   //REGISTER
+   yield takeEvery(
+    actionTypes.REGISTER_REQUEST,
+    auth.registerSaga
+  );
   // DELETE POST
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
   // UPDATE POST
   yield takeEvery(actionTypes.UPDATE_POST_REQUEST, CRUDpost.updatePostSaga);
+  //POST FILTER
+  yield takeEvery(actionTypes.POST_FILTER_REQUEST, CRUDpost.postFilterSaga);
 }
 export default rootSaga;

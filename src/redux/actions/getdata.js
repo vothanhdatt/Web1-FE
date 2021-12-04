@@ -20,3 +20,14 @@ export const getFeatureMemberRequest = (payload) => {
     payload: payload,
   };
 };
+//GET Related Post
+export const GET_RELATED_POST_REQUEST = "GET_RELATED_POST_REQUEST";
+export const GET_RELATED_POST_SUCCESS = "GET_RELATED_POST_SUCCESS";
+export const GET_RELATED_POST_FAILURE = "GET_RELATED_POST_FAILURE";
+
+export const getRelatedPostRequest = (payload) => {
+  return {
+    type: GET_RELATED_POST_REQUEST,
+    payload: payload,
+  };
+};
