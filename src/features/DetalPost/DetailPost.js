@@ -52,7 +52,7 @@ function DetailPost(props) {
                 <div className="w-16 h-16 ">
                   <img
                     className="w-16 border-2 border-blue-500 rounded-full h-16"
-                    src={getDetailPost.authorAvatar}
+                    src={env.URL_IMAGE + getDetailPost.authorAvatar}
                   />
                 </div>
                 <div className="pl-2 mb-1 whitespace-normal text-sm  ">
