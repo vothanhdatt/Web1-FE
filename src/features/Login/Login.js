@@ -19,9 +19,9 @@ function Login() {
   };
   let history = useHistory();
   const [cookies] = useCookies(["_token"]);
-  if (cookies._token) {
-    history.push(routes.homepage);
-  }
+  // if (cookies._token) {
+  //   history.push(routes.homepage);
+  // }
   const dispatch = useDispatch();
   //Form Login
   return (

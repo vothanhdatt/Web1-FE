@@ -83,7 +83,7 @@ export default function authReducer(state = initialState, action) {
       newState.data = action.payload;
       cookie.set("_token", action.payload);
       toast("Đăng ký thành công!");
-      //window.location.href = routes.login;
+      window.location.href = routes.Login;
 
       return newState;
 

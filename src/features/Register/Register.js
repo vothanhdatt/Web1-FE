@@ -16,9 +16,10 @@ function Register() {
     formState: { errors },
   } = useForm();
   const onSubmitForm = formData => {
-  
+    
+    dispatch(registerRequest(formData));
   };
-  dispatch(registerRequest());
+  
   let history = useHistory();
   const [cookies] = useCookies(["_token"]);
   if (cookies._token) {
@@ -223,7 +224,7 @@ function Register() {
             </div>{" "}
             <div className="flex justify-center items-center mt-6">
               <button
-                className={` bg-blue-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
+                className={` bg-green-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
               >
                 <Link to="./Login"> Login </Link>{" "}
               </button>{" "}
