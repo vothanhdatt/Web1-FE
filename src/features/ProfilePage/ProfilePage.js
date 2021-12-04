@@ -52,6 +52,19 @@ export default function ProfilePage() {
     );
     setIdDel(id);
   };
+  const onFilterSubmit = FormData => {
+    //
+  };
+
+  //
+  const [dateFilter, setDateFilter] = useState(false);
+  const onHandleFilter = e => {
+    if (e.target.value === "date") {
+      setDateFilter(true);
+    } else {
+      setDateFilter(false);
+    }
+  };
   //
   useEffect(() => {
     dispatch(getProfileRequest());
@@ -193,8 +206,53 @@ export default function ProfilePage() {
               </div>
             </div>
           </section>
-          <div className="grid-cols-6 grid-rows-1 gap-4 mx-auto max-w-6xl lg:grid my-7 px-10 ">
-            <div className="col-span-6">
+          <div className="grid-cols-6 grid-rows-1 gap-4 mx-auto max-w-full lg:grid my-7 px-10 ">
+            <div className="col-span-1 mb-5 mx-5 lg:mx-1 ">
+              <div className="bg-white shadow-md rounded-lg overflow-hidden mx-auto w-full p-5">
+                <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                  Filter{" "}
+                </h1>
+                <form onSubmit={handleSubmit(onFilterSubmit)}>
+                  <label className="block text-grey-darker text-sm mb-1 mt-2">
+                    <select
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      {...register("order_by")}
+                    >
+                      <option value="ASC">Tăng</option>
+                      <i className="fa fa-arrow-up" aria-hidden="true"></i>
+                      <option value="DESC">Giảm</option>
+                    </select>
+                  </label>
+                  <label className="block text-grey-darker text-sm mb-1 mt-2">
+                    <select
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      onChangeCapture={e => onHandleFilter(e)}
+                      {...register("filter_by", { required: true })}
+                    >
+                      <option value="name">Name</option>
+                      <option value="created_at">Created At</option>
+                      <option value="date">Date</option>
+                    </select>
+                  </label>
+                  {dateFilter && (
+                    <input
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      required="required"
+                      type="date"
+                      name="time"
+                      id="time"
+                      {...register("time")}
+                    />
+                  )}
+                  <div className="flex justify-center mt-2">
+                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                      Filter
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="col-span-4">
               {listPost ? (
                 <div>
                   <div className="bg-gray-200   justify-center">
@@ -214,6 +272,14 @@ export default function ProfilePage() {
                 <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                   Loadmore
                 </button>
+              </div>
+            </div>
+            <div className="col-span-1">
+              <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                Thành Viên Nổi Bật{" "}
+              </h1>
+              <div className="flex flex-row overflow-auto lg:flex-col">
+                Đây là thành viên nổi bật
               </div>
             </div>
           </div>
