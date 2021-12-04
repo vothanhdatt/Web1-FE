@@ -218,7 +218,7 @@ function Register() {
             </div>{" "}
             <div>
               <button type="submit" 
-              className={`bg-blue-500 py-2 px-36 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
+              className={`bg-blue-500 py-2 px-32 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
               >
                 Register </button>{" "}
             </div>{" "}
