@@ -31,14 +31,25 @@ export const registerRequest = payload => {
     payload: payload,
   };
 };
-//REGISTER
-export const FORGOTPASSWORD_REQUEST = "FORGOTPASSWORD_REQUEST";
-export const FORGOTPASSWORD_SUCCESS = "FORGOTPASSWORD_SUCCESS";
-export const FORGOTPASSWORD_FAILURE = "FORGOTPASSWORD_FAILURE";
+//RESETPASS
+export const RESETPASS_REQUEST = "RESETPASS_REQUEST";
+export const RESETPASS_SUCCESS = "RESETPASS_SUCCESS";
+export const RESETPASS_FAILURE = "RESETPASS_FAILURE";
 
-export const forgotpasswordRequest = payload => {
+export const resetpassRequest = payload => {
   return {
-    type: FORGOTPASSWORD_REQUEST,
+    type: RESETPASS_REQUEST,
+    payload: payload,
+  };
+};
+//CONFIRMPASS
+export const CONFIRMPASS_REQUEST = "CONFIRMPASS_REQUEST";
+export const CONFIRMPASS_SUCCESS = "CONFIRMPASS_SUCCESS";
+export const CONFIRMPASS_FAILURE = "CONFIRMPASS_FAILURE";
+
+export const confirmpassRequest = payload => {
+  return {
+    type: CONFIRMPASS_REQUEST,
     payload: payload,
   };
 };

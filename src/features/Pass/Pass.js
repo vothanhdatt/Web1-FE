@@ -1,15 +1,26 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Header from '../../components/Header';
-const Pass = () => {
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
+import Header from "../../components/Header";
+import { useForm } from "react-hook-form";
+import { useDispatch} from "react-redux";
+import {loginRequest,resetpassRequest} from "../../redux/actions";
+import { useCookies } from "react-cookie";
+import routes from "../../constant/routes";
+import { useHistory } from "react-router";
 
-        let email = e.target.elements.email?.value;
-        let password = e.target.elements.password?.value;
+function Pass() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmitForm = formData => {
+    dispatch(resetpassRequest(formData));
+  };
+  let history = useHistory();
+  const [cookies] = useCookies(["_token"]);
 
-        console.log(email, password);
-    };
+  const dispatch = useDispatch();
     return (
         <div>
              <Header/>
@@ -19,7 +30,7 @@ const Pass = () => {
                         FORGOT PASSWORD
                     </h1>
 
-                    <form onSubmit={handleFormSubmit}>
+                      <form onSubmit={handleSubmit(onSubmitForm)}>
                         <div>
                             <label htmlFor='email'></label>
                             <input
@@ -27,30 +38,27 @@ const Pass = () => {
                                 className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                                 id='email'
                                 placeholder='Your Email'
+                                {...register("email", {
+                                    required: {
+                                      value: true,
+                                      message: "Email required.",
+                                    },
+                                    minLength: {
+                                      value: 6,
+                                      message:
+                                        "Email have minimum length is 6",
+                                    },
+                                  })}
                             />
+                             {errors.email && (
+                          <p className="text-red-600">
+                            {errors.email.message}
+                          </p>
+                        )}
                         </div>
-                        <div>
-                            <label htmlFor='verification'></label>
-                            <input
-                                type='text'
-                                className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
-                                id='verification'
-                                placeholder='verification code'
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor='newpassword'></label>
-                            <input
-                                type='password'
-                                className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
-                                id='newpassword'
-                                placeholder='New PassWord'
-                            />
-                        </div>
-
                         <div className={`bg-blue-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}>
                             <button>
-                                <Link to="./Login">Confirm</Link>
+                                Confirm
                             </button>
                         </div>
 
