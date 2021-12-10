@@ -31,3 +31,15 @@ export const registerRequest = payload => {
     payload: payload,
   };
 };
+//REGISTER
+export const FORGOTPASSWORD_REQUEST = "FORGOTPASSWORD_REQUEST";
+export const FORGOTPASSWORD_SUCCESS = "FORGOTPASSWORD_SUCCESS";
+export const FORGOTPASSWORD_FAILURE = "FORGOTPASSWORD_FAILURE";
+
+export const forgotpasswordRequest = payload => {
+  return {
+    type: FORGOTPASSWORD_REQUEST,
+    payload: payload,
+  };
+};
+
