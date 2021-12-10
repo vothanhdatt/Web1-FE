@@ -75,6 +75,16 @@ function* rootSaga() {
     actionTypes.REGISTER_REQUEST,
     auth.registerSaga
   );
+    //ResetPass
+    yield takeEvery(
+      actionTypes.RESETPASS_REQUEST,
+      auth.resetpassSaga
+    );
+     //ConfirmPass
+     yield takeEvery(
+      actionTypes.CONFIRMPASS_REQUEST,
+      auth.confirmpassSaga
+    );
   // DELETE POST
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
   // UPDATE POST

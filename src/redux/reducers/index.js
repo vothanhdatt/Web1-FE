@@ -22,5 +22,5 @@ export default combineReducers({
   getDetailPostReducer,
   authReducer,
   getRelatedPostReducer,
-   getFeatureMemberReducer,
+  getFeatureMemberReducer,
 });

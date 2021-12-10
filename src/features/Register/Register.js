@@ -19,13 +19,6 @@ function Register() {
     
     dispatch(registerRequest(formData));
   };
-  
-  let history = useHistory();
-  const [cookies] = useCookies(["_token"]);
-  if (cookies._token) {
-    history.push(routes.Login);
-  }
-  
   return (
     // Form Register
     <div>
