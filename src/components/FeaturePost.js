@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import env from "../env";
 
 FeaturePost.propTypes = {
   image: PropTypes.string,
@@ -13,6 +14,12 @@ FeaturePost.defaul = {
   description: "",
   name: "",
 };
+/*
+ * getFeaturePost
+
+ * Call api lấy bài viết nổibat
+Hiển thị ra giao diện
+ */
 
 function FeaturePost(props) {
   const { featurePost } = props;
@@ -25,7 +32,7 @@ function FeaturePost(props) {
             key={post.id}
           >
             <div className="mr-3">
-              <img className="rounded-lg" src={post.image} />
+              <img className="rounded-lg" src={env.URL_IMAGE + post.image} />
             </div>
             <div className="col-span-2 text-xs -pt-1 lg:ml-8 xl:ml-0 content-center">
               <div className="w-52">

@@ -46,7 +46,7 @@ export default {
     try {
       let response = yield global.apiService.apiCall(
         "post",
-        "post-update",
+        "update-post",
         payload,
         true
       );
@@ -81,7 +81,7 @@ export default {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
-        "post",
+        "get",
         "get-all-post",
         payload,
         true
@@ -108,6 +108,78 @@ export default {
     } catch (error) {
       yield put({
         type: actionType.GET_LIST_POST_BY_USER_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
+  //DELETE POST
+  deletePostSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "delete-post",
+        payload,
+        false
+      );
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.DELETE_POST_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.DELETE_POST_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.DELETE_POST_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.DELETE_POST_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
+  //POST FILTER
+  postFilterSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "get",
+        "...",
+        payload,
+        false
+      );
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.POST_FILTER_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.POST_FILTER_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.POST_FILTER_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.POST_FILTER_FAILURE,
         error: "Something went wrong!",
       });
     }

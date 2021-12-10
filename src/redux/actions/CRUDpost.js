@@ -31,3 +31,26 @@ export function getListPostByUserRequest(payload) {
     payload: payload,
   };
 }
+//DELETE POST
+export const DELETE_POST_REQUEST = "DELETE_POST_REQUEST";
+export const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS";
+export const DELETE_POST_FAILURE = "DELETE_POST_FAILURE";
+
+export function deletePostRequest(payload) {
+  return {
+    type: DELETE_POST_REQUEST,
+    payload: payload,
+  };
+}
+
+//POST FILTER
+export const POST_FILTER_REQUEST = "POST_FILTER_REQUEST";
+export const POST_FILTER_SUCCESS = "POST_FILTER_SUCCESS";
+export const POST_FILTER_FAILURE = "POST_FILTER_FAILURE";
+
+export function postFilterRequest(payload) {
+  return {
+    type: POST_FILTER_REQUEST,
+    payload: payload,
+  };
+}

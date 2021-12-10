@@ -1,15 +1,28 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Header from "../../components/Header";
-const Login = () => {
-  const handleFormSubmit = e => {
-    e.preventDefault();
+import { useForm } from "react-hook-form";
+import { useDispatch} from "react-redux";
+import {loginRequest} from "../../redux/actions";
+import { useCookies } from "react-cookie";
+import routes from "../../constant/routes";
+import { useHistory } from "react-router";
 
-    // let email = e.target.elements.email ? .value;
-    // let password = e.target.elements.password ? .value;
-
-    // console.log(email, password);
+function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmitForm = formData => {
+    dispatch(loginRequest(formData));
   };
+  let history = useHistory();
+  const [cookies] = useCookies(["_token"]);
+  // if (cookies._token) {
+  //   history.push(routes.homepage);
+  // }
+  const dispatch = useDispatch();
   //Form Login
   return (
     <div>
@@ -19,31 +32,57 @@ const Login = () => {
           <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center">
             LOG IN🔐{" "}
           </h1>
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={handleSubmit(onSubmitForm)}>
             <div>
               <label htmlFor="email"> </label>{" "}
               <input
                 type="email"
                 className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
-                id="email"
+                id="login-email-input"
                 placeholder="Your Email"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email required.",
+                  },
+                })}
               />
+              {errors.email && (
+                          <p className="text-red-600">
+                            {errors.email.message}
+                          </p>
+                        )}
             </div>{" "}
             <div>
               <label htmlFor="password"> </label>{" "}
               <input
                 type="password"
                 className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
-                id="password"
+                id="login-password-input"
                 placeholder="Your Password"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Password  required.",
+                  },
+                  minLength: {
+                    value: 6,
+                    message:
+                      "Password have minimum length is 6",
+                  },
+                })}
               />
+              {errors.password && (
+                          <p className="text-red-600">
+                            {errors.password.message}
+                          </p>
+                        )}
             </div>{" "}
-            <div
-              className={`bg-blue-500 py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
-            >
-              <button>
-                <Link to="./HomePage"> Login </Link>{" "}
-              </button>{" "}
+            <div>
+              <button type="submit" 
+              className={`bg-blue-500 py-2 px-36 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark text-center`}
+              >
+                Login </button>{" "}
             </div>{" "}
             <div className="flex justify-center items-center mt-6">
               <button

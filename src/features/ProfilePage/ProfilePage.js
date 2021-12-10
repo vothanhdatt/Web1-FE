@@ -8,7 +8,9 @@ import env from "../../env";
 import {
   getProfileRequest,
   getListPostByUserRequest,
+  deletePostRequest,
 } from "../../redux/actions";
+import ProfilePost from "../../components/ProiflePost";
 import { useDispatch, useSelector } from "react-redux";
 import * as moment from "moment";
 // Constant
@@ -28,7 +30,7 @@ export default function ProfilePage() {
     formState: { errors },
     watch,
   } = useForm();
-
+  const [idDel, setIdDel] = useState();
   let history = useHistory();
   const dispatch = useDispatch();
   //
@@ -42,12 +44,35 @@ export default function ProfilePage() {
     history.push(routes.createpost);
   };
   //
-  const onHandleDelete = () => {};
+  const onHandleDelete = id => {
+    dispatch(
+      deletePostRequest({
+        postID: id,
+      })
+    );
+    setIdDel(id);
+  };
+  const onFilterSubmit = FormData => {
+    //
+  };
+
+  //
+  const [dateFilter, setDateFilter] = useState(false);
+  const onHandleFilter = e => {
+    if (e.target.value === "date") {
+      setDateFilter(true);
+    } else {
+      setDateFilter(false);
+    }
+  };
   //
   useEffect(() => {
     dispatch(getProfileRequest());
     dispatch(getListPostByUserRequest());
   }, []);
+  useEffect(() => {
+    dispatch(getListPostByUserRequest());
+  }, [idDel]);
   const profile = useSelector(state => state.getProfileReducer.data);
   const listPost = useSelector(state => state.CRUDPostReducer.data);
 
@@ -181,203 +206,80 @@ export default function ProfilePage() {
               </div>
             </div>
           </section>
-          <div className="grid-cols-6 grid-rows-1 gap-4 mx-auto max-w-6xl lg:grid my-7 px-10 ">
-            <div className="col-span-6">
-              <div>
-                <div className="bg-gray-200   justify-center">
-                  {/* Component Post*/}
-                  {listPost &&
-                    listPost.map(post => (
-                      <div>
-                        <div
-                          className="flex w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto  mb-5"
-                          key={post.id}
-                        >
-                          <div className="flex items-center w-full">
-                            <div className="w-full">
-                              <div className="flex flex-row mt-2 px-2 py-3 mx-3 justify-between">
-                                <div className="flex flex-row ">
-                                  <div className="w-auto h-auto rounded-full border-2 border-pink-500">
-                                    <img
-                                      className="w-12 h-12 object-cover rounded-full shadow cursor-pointer"
-                                      alt="User avatar"
-                                      src={profile.avatar}
-                                    />
-                                  </div>
-                                  <div className="flex flex-col mb-2 ml-4 mt-1">
-                                    <div className="text-gray-600 text-sm font-semibold">
-                                      {profile.first_name +
-                                        " " +
-                                        profile.last_name}
-                                    </div>
-                                    <div className="flex w-full mt-1">
-                                      <div className="text-blue-700 font-base text-xs mr-1 cursor-pointer">
-                                        {post.status}
-                                      </div>
-                                      <div className="text-gray-400 font-thin text-xs">
-                                        •{" "}
-                                        {moment(post.created_at).format(
-                                          "DD/MM/YYYY"
-                                        )}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <Menu
-                                    as="div"
-                                    className="relative inline-block text-left"
-                                  >
-                                    <div>
-                                      <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                        Options
-                                      </Menu.Button>
-                                    </div>
-
-                                    <Transition
-                                      as={Fragment}
-                                      enter="transition ease-out duration-100"
-                                      enterFrom="transform opacity-0 scale-95"
-                                      enterTo="transform opacity-100 scale-100"
-                                      leave="transition ease-in duration-75"
-                                      leaveFrom="transform opacity-100 scale-100"
-                                      leaveTo="transform opacity-0 scale-95"
-                                    >
-                                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                        <div className="py-1">
-                                          {post.status !== "pending" && (
-                                            <Menu.Item>
-                                              {({ active }) => (
-                                                <Link
-                                                  to={`/detailpost/${post.id}`}
-                                                  className={classNames(
-                                                    active
-                                                      ? "bg-gray-100 text-gray-900"
-                                                      : "text-gray-700",
-                                                    "block px-4 py-2 text-sm"
-                                                  )}
-                                                >
-                                                  View
-                                                </Link>
-                                              )}
-                                            </Menu.Item>
-                                          )}
-
-                                          <Menu.Item>
-                                            {({ active }) => (
-                                              <a
-                                                href={
-                                                  routes.updatepost + post.id
-                                                }
-                                                //to={routes.updatepost + post.id}
-                                                className={classNames(
-                                                  active
-                                                    ? "bg-gray-100 text-gray-900"
-                                                    : "text-gray-700",
-                                                  "block px-4 py-2 text-sm"
-                                                )}
-                                              >
-                                                Update
-                                              </a>
-                                            )}
-                                          </Menu.Item>
-                                          <Menu.Item
-                                            onClick={() =>
-                                              onHandleDelete(post.id)
-                                            }
-                                          >
-                                            {({ active }) => (
-                                              <p
-                                                className={classNames(
-                                                  active
-                                                    ? "bg-gray-100 text-gray-900"
-                                                    : "text-gray-700",
-                                                  "block px-4 py-2 text-sm"
-                                                )}
-                                              >
-                                                Delete
-                                              </p>
-                                            )}
-                                          </Menu.Item>
-                                        </div>
-                                      </Menu.Items>
-                                    </Transition>
-                                  </Menu>
-                                </div>
-                              </div>
-                              <div className="border-b border-gray-100"></div>
-                              <div className="text-gray-400 font-medium text-sm mb-7 mt-6 mx-3 px-2 ">
-                                <img
-                                  className="w-screen "
-                                  src={env.URL_IMAGE + post.image}
-                                />{" "}
-                              </div>
-                              <Link
-                                className="text-gray-600 font-semibold text-lg mb-2 mx-3 px-2"
-                                to={`/detailpost/${post.id}`}
-                              >
-                                {post.name}
-                              </Link>
-                              <div
-                                className="text-gray-500 font-thin text-sm mb-6 mx-3 px-2 "
-                                dangerouslySetInnerHTML={{
-                                  __html: post.content.substr(0, 500),
-                                }}
-                              ></div>
-                              {post.status !== "pending" && (
-                                <Link
-                                  className="text-gray-600 font-semibold text-lg mb-2 mx-3 px-2"
-                                  to={`/detailpost/${post.id}`}
-                                >
-                                  ...xem thêm
-                                </Link>
-                              )}
-
-                              <div className="flex w-full border-t border-gray-100">
-                                <div className="mt-3 mx-5 flex flex-row">
-                                  <div className="flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center">
-                                    Comments:
-                                    <div className="ml-1 text-gray-400 font-thin text-ms">
-                                      {" "}
-                                      10
-                                    </div>
-                                  </div>
-                                  <div className="flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center">
-                                    Views:{" "}
-                                    <div className="ml-1 text-gray-400 font-thin text-ms">
-                                      {" "}
-                                      999
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="mt-3 mx-5 w-full flex justify-end">
-                                  <div className="flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center">
-                                    Rating:{" "}
-                                    <div className="ml-1 text-gray-400 font-thin text-ms">
-                                      {" "}
-                                      4.5
-                                      <i
-                                        className="fa fa-star"
-                                        aria-hidden="true"
-                                      ></i>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-
-                  {/* Component post */}
-                </div>
+          <div className="grid-cols-6 grid-rows-1 gap-4 mx-auto max-w-full lg:grid my-7 px-10 ">
+            <div className="col-span-1 mb-5 mx-5 lg:mx-1 ">
+              <div className="bg-white shadow-md rounded-lg overflow-hidden mx-auto w-full p-5">
+                <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                  Filter{" "}
+                </h1>
+                <form onSubmit={handleSubmit(onFilterSubmit)}>
+                  <label className="block text-grey-darker text-sm mb-1 mt-2">
+                    <select
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      {...register("order_by")}
+                    >
+                      <option value="ASC">Tăng</option>
+                      <i className="fa fa-arrow-up" aria-hidden="true"></i>
+                      <option value="DESC">Giảm</option>
+                    </select>
+                  </label>
+                  <label className="block text-grey-darker text-sm mb-1 mt-2">
+                    <select
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      onChangeCapture={e => onHandleFilter(e)}
+                      {...register("filter_by", { required: true })}
+                    >
+                      <option value="name">Name</option>
+                      <option value="created_at">Created At</option>
+                      <option value="date">Date</option>
+                    </select>
+                  </label>
+                  {dateFilter && (
+                    <input
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      required="required"
+                      type="date"
+                      name="time"
+                      id="time"
+                      {...register("time")}
+                    />
+                  )}
+                  <div className="flex justify-center mt-2">
+                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                      Filter
+                    </button>
+                  </div>
+                </form>
               </div>
-
+            </div>
+            <div className="col-span-4">
+              {listPost ? (
+                <div>
+                  <div className="bg-gray-200   justify-center">
+                    {/* Component Post*/}
+                    <ProfilePost
+                      postList={listPost}
+                      profile={profile}
+                      onHandleDelete={onHandleDelete}
+                    ></ProfilePost>
+                    {/* Component post */}
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
               <div className="flex justify-center">
                 <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                   Loadmore
                 </button>
+              </div>
+            </div>
+            <div className="col-span-1">
+              <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                Thành Viên Nổi Bật{" "}
+              </h1>
+              <div className="flex flex-row overflow-auto lg:flex-col">
+                Đây là thành viên nổi bật
               </div>
             </div>
           </div>

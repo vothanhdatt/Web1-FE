@@ -7,6 +7,10 @@ const routes = {
   Login: "/Login",
   Register: "/Register",
   Pass: "/Pass",
+  /* GET detailPost
+   *   Call api lấy chi tiết bài viết
+   * Hiển thị ra giao diện
+   */
   detailpost: "/detailpost/:id",
   updateprofile: "/updateprofile",
   changepassword: "/changepassword",

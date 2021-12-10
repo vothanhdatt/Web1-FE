@@ -8,10 +8,18 @@ import auth from "./auth";
 
 function* rootSaga() {
   yield takeEvery(actionTypes.FEATUREPOST_REQUEST, listpost.featurepostSaga);
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   yield takeEvery(
     actionTypes.GETPOSTBYCATEGORY_REQUEST,
     listpost.getPostByCategorySaga
   );
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   yield takeEvery(
     actionTypes.GETCATEGORIES_REQUEST,
     listpost.getCategoriesSaga
@@ -26,6 +34,9 @@ function* rootSaga() {
     actionTypes.UPDATE_PROFILE_REQUEST,
     profile.updateProfileSaga
   );
+  /* GET detailPost
+   *   Call api lấy chi tiết bài viết
+   */
   yield takeEvery(
     actionTypes.GETDETAILPOST_REQUEST,
     listpost.getDetailPostSaga
@@ -34,6 +45,16 @@ function* rootSaga() {
   yield takeEvery(
     actionTypes.GET_ALL_CATEGORIE_REQUEST,
     getdata.getAllCategorieSaga
+  );
+  // GET ALL CATEGORIES
+  yield takeEvery(
+    actionTypes.GET_RELATED_POST_REQUEST,
+    getdata.getRelatedPostSaga
+  );
+  // get featureMember
+  yield takeEvery(
+    actionTypes.GET_FEATURE_MEMBER_REQUEST,
+    getdata.getFeatureMemberSaga
   );
   // CREATE POST
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
@@ -44,5 +65,21 @@ function* rootSaga() {
     actionTypes.GET_LIST_POST_BY_USER_REQUEST,
     CRUDpost.getListPostByUserSaga
   );
+  //LOGIN
+  yield takeEvery(
+    actionTypes.LOGIN_REQUEST,
+    auth.loginSaga
+  );
+   //REGISTER
+   yield takeEvery(
+    actionTypes.REGISTER_REQUEST,
+    auth.registerSaga
+  );
+  // DELETE POST
+  yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
+  // UPDATE POST
+  yield takeEvery(actionTypes.UPDATE_POST_REQUEST, CRUDpost.updatePostSaga);
+  //POST FILTER
+  yield takeEvery(actionTypes.POST_FILTER_REQUEST, CRUDpost.postFilterSaga);
 }
 export default rootSaga;
