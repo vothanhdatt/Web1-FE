@@ -10,10 +10,12 @@ import CreatePost from "./CreatePost/CreatePost";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Pass from "./Pass/Pass";
+import ResetPass from "./ResetPass/ResetPass";
 import UpdateProfile from "./UpdateProfilePage/UpdateProfilePage";
 import detailpost from "./DetalPost/DetailPost";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import UpdatePost from "./UpdatePost/UpdatePost";
+import NotFoundPage from "./NotFoundPage/NotFoundPage";
 export default (
   <Switch>
     <Route exact path={route.homepage} component={homepage} />
@@ -24,9 +26,11 @@ export default (
     <Route exact path={route.Login} component={Login} />
     <Route exact path={route.Register} component={Register} />
     <Route exact path={route.Pass} component={Pass} />
+    <Route exact path={route.Resetpass} component={ResetPass} />
     <Route exact path={route.updateprofile} component={UpdateProfile} />
     <Route exact path={route.detailpost} component={detailpost} />
     <Route exact path={route.changepassword} component={ChangePassword} />
     <Route exact path={route.updatepost + ":id"} component={UpdatePost} />
+    <Route path="*" component={NotFoundPage} />
   </Switch>
 );

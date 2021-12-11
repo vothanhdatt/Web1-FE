@@ -9,6 +9,7 @@ import {
   getProfileRequest,
   getListPostByUserRequest,
   deletePostRequest,
+  getFeatureMemberRequest,
 } from "../../redux/actions";
 import ProfilePost from "../../components/ProiflePost";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +19,7 @@ import routes from "../../constant/routes";
 // Components
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import FeatureMember from "../../components/FeatureMember";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -69,12 +71,16 @@ export default function ProfilePage() {
   useEffect(() => {
     dispatch(getProfileRequest());
     dispatch(getListPostByUserRequest());
+    dispatch(getFeatureMemberRequest());
   }, []);
   useEffect(() => {
     dispatch(getListPostByUserRequest());
   }, [idDel]);
   const profile = useSelector(state => state.getProfileReducer.data);
   const listPost = useSelector(state => state.CRUDPostReducer.data);
+  const listFeaturestUser = useSelector(
+    state => state.getFeatureMemberReducer.data
+  );
 
   return (
     <>
@@ -279,7 +285,7 @@ export default function ProfilePage() {
                 Thành Viên Nổi Bật{" "}
               </h1>
               <div className="flex flex-row overflow-auto lg:flex-col">
-                Đây là thành viên nổi bật
+                <FeatureMember listUser={listFeaturestUser} />
               </div>
             </div>
           </div>

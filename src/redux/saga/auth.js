@@ -79,4 +79,115 @@ export default {
       });
     }
   },
+  //REGISTER
+  registerSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "member-register",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.isSuccess) {
+          yield put({
+            type: actionType.REGISTER_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.REGISTER_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.REGISTER_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.REGISTER_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
+   //RESETPASS
+   resetpassSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "member-code-reset-password",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.isSuccess) {
+          yield put({
+            type: actionType.RESETPASS_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.RESETPASS_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.RESETPASS_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.RESETPASS_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
+  //CONFIRMPASS
+  confirmpassSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "member-reset-password",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.isSuccess) {
+          yield put({
+            type: actionType.CONFIRMPASS_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.CONFIRMPASS_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.CONFIRMPASS_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.CONFIRMPASS_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
 };
