@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import * as moment from "moment";
+import env from "../env";
 
 Comment.propTypes = {
   text_content: PropTypes.string,
@@ -315,11 +316,11 @@ function Comment(props) {
     return (
       <>
         {slice.map((data) => (
-          <div className="flex px-2 mt-2" key={data.id}>
+          <div className="flex px-2 mt-2 max-w-5xl mx-auto" key={data.id}>
             <div className="content-center w-8 h-8 mt-1 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-12 xl:h-12">
               <img
                 className="w-8 h-8 border-2 border-blue-500 rounded-full md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-12 xl:h-12"
-                src={data.authorAvatar}
+                src={env.URL_IMAGE + data.authorAvatar}
               />
             </div>
             <div className="flex flex-col items-center w-full mt-1 ml-2 bg-gray-200 sm:ml-4 rounded-xl">
