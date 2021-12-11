@@ -1,62 +1,3 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import "../css/Header.css";
-// import route from "../constant/routes";
-// import { Link } from "react-router-dom";
-
-// //* Header
-// Header.propTypes = {};
-
-// function Header(props) {
-//   //onchange get value option
-//   /* getPostByCategory
-//    * Call Call api tất cả bài viết theo category
-//    * Lấy tất cả bà viết
-//    */
-//   const onchange = (e) => {
-//     props.parenCallBack(e.target.value);
-//   };
-//   //GET  CATEGORIES
-//   /* GET aLL  CATEGORIES
-//    * Call Call api tất cả category
-//    */
-//   const { listCategories } = props;
-//   return (
-//     <nav className="navbar">
-//       <h1>The Homies Blog</h1>
-//       {listCategories ? (
-//         <select
-//           onChange={(e) => onchange(e)}
-//           className="px-3 ml-4 py-2 text-base font-medium text-white bg-pink-500 rounded-md appearance-none hover:bg-pink-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-//         >
-//           <option>Categories</option>
-//           {listCategories.map((category) => (
-//             <option key={category.id} value={category.id}>
-//               {category.name}
-//             </option>
-//           ))}
-//         </select>
-//       ) : (
-//         <div></div>
-//       )}
-
-//       <div className="links">
-//         <Link to={route.homepage}> Home</Link>
-//         <Link to="./Posts"> Posts</Link>
-//         <Link to="./Register" className="sign-in">
-//           {" "}
-//           Register
-//         </Link>
-//         <Link to="./Login" className="Resgister">
-//           {" "}
-//           Login
-//         </Link>
-//       </div>
-//     </nav>
-//   );
-// }
-
-// export default Header;
 import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellOutline, MenuOutline, XOutline } from "heroicons-react";
@@ -68,9 +9,7 @@ import PropTypes from "prop-types";
 import { logoutRequest } from "../redux/actions";
 import { Link } from "react-router-dom";
 
-const navigation = [
-  { name: "Home", href: routes.homepage, current: true },
-];
+const navigation = [{ name: "Home", href: routes.homepage, current: true }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -78,7 +17,7 @@ function classNames(...classes) {
 
 export default function Header(props) {
   const dispatch = useDispatch();
-  const profile = useSelector((state) => state.getProfileReducer.data);
+  const profile = useSelector(state => state.getProfileReducer.data);
   // console.log("PROFILE: ", profile);
   let history = useHistory();
   const [cookies, setCookie, removeCookie] = useCookies(["_token"]);
@@ -95,8 +34,8 @@ export default function Header(props) {
     dispatch(logoutRequest());
   };
   //
-  const change = (e) => {
-    props.parentCallback(e.target.value);
+  const change = e => {
+    props.parenCallBack(e.target.value);
   };
   //
   //ALL CATEGORIES
@@ -143,7 +82,7 @@ export default function Header(props) {
                 </div>
                 <div className="hidden sm:ml-0 md:ml-6 sm:block">
                   <div className="flex inline lg:space-x-4">
-                    {navigation.map((item) => (
+                    {navigation.map(item => (
                       <Link
                         key={item.name}
                         to={item.href}
@@ -158,35 +97,7 @@ export default function Header(props) {
                         {item.name}
                       </Link>
                     ))}
-                    {featureCategories ? (
-                      <div className="relative inline-flex ">
-                        <svg
-                          className="absolute top-0 right-0 w-3 h-2 m-3 pointer-events-none sm:h-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 412 232"
-                        >
-                          <path
-                            d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z"
-                            fill="#648299"
-                            fillRule="nonzero"
-                          />
-                        </svg>
-                        <select
-                          onChange={(e) => change(e)}
-                          className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                        >
-                          <option>Feature Categories</option>
-                          <option value="*">AllCategories</option>
-                          {featureCategories.map((post) => (
-                            <option value={post.id} key={post.id}>
-                              {post.name}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    ) : (
-                      <div></div>
-                    )}
+
                     {listCategories ? (
                       <div className="relative inline-flex ">
                         <svg
@@ -201,12 +112,12 @@ export default function Header(props) {
                           />
                         </svg>
                         <select
-                          onChange={(e) => change(e)}
+                          onChange={e => change(e)}
                           className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                         >
                           <option>Categories</option>
                           <option value="*">AllCategories</option>
-                          {listCategories.map((post) => (
+                          {listCategories.map(post => (
                             <option value={post.id} key={post.id}>
                               {post.name}
                             </option>
@@ -333,7 +244,7 @@ export default function Header(props) {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
+              {navigation.map(item => (
                 <Link
                   key={item.name}
                   to={item.href}
@@ -362,12 +273,12 @@ export default function Header(props) {
                     />
                   </svg>
                   <select
-                    onChange={(e) => change(e)}
+                    onChange={e => change(e)}
                     className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
                     <option>Feature Categories</option>
                     <option value="*">AllCategories</option>
-                    {featureCategories.map((post) => (
+                    {featureCategories.map(post => (
                       <option value={post.id} key={post.id}>
                         {post.name}
                       </option>
@@ -391,11 +302,11 @@ export default function Header(props) {
                     />
                   </svg>
                   <select
-                    onChange={(e) => change(e)}
+                    onChange={e => change(e)}
                     className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
                     <option value="*">Categories</option>
-                    {listCategories.map((post) => (
+                    {listCategories.map(post => (
                       <option value={post.id} key={post.id}>
                         {post.name}
                       </option>
@@ -411,5 +322,4 @@ export default function Header(props) {
       )}
     </Disclosure>
   );
-  // } else {
 }
