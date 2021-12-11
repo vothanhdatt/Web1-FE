@@ -1,13 +1,17 @@
-// Packages
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import Header from "../../components/Header";
 import { useHistory } from "react-router";
-import { useForm } from "react-hook-form";
-// Constant
 import routes from "../../constant/routes";
+import { useForm } from "react-hook-form";
+import { getAllCategorieRequest, createPostRequest } from "../../redux/actions";
+import Cookies from "universal-cookie";
 
 function CreatePost() {
+  let cookie = new Cookies();
+  let dispatch = useDispatch();
   const [cover, setCover] = useState("");
   let history = useHistory();
   const {
@@ -44,7 +48,9 @@ function CreatePost() {
     },
   };
   //
-
+  useEffect(() => {
+    dispatch(getAllCategorieRequest());
+  }, []);
   useEffect(() => {
     register("content", {
       required: { value: true, message: "Content required..!" },
@@ -55,7 +61,7 @@ function CreatePost() {
     });
     register("image", {
       required: { value: true, message: "Cover image required..!" },
-      validate: (value) =>
+      validate: value =>
         value.type === "image/png" ||
         value.type === "image/jpeg" ||
         " TYPE INVAILID!",
@@ -63,7 +69,7 @@ function CreatePost() {
   }, [register]);
 
   //
-  const onEditorStateChange = (editorState) => {
+  const onEditorStateChange = editorState => {
     setValue("content", editorState);
   };
   const editorContent = watch("content");
@@ -84,12 +90,12 @@ function CreatePost() {
     "image",
     "video",
   ];
-  //Cancel quay trở lại trang profile
+  //
   const onHandleCancel = () => {
     history.push(routes.profile);
   };
   //
-  const onImageStateChange = (e) => {
+  const onImageStateChange = e => {
     if (e.target.files[0]) {
       setValue("image", e.target.files[0]);
     }
@@ -98,19 +104,20 @@ function CreatePost() {
 
   const image = watch("image");
   //Submit Form
-  const onSubmitForm = (formData) => {
+  const onSubmitForm = formData => {
     if (!image) {
       setValue("image", null);
     }
-    //dispacth action Create Post
+    dispatch(createPostRequest(formData));
   };
+  const allCategorie = useSelector(state => state.getAllCategorieReducer.data);
   //
-
+  if (!cookie.get("_token")) {
+    history.push(routes.home);
+  }
   return (
     <>
-      {/* Header */}
-
-      {/* Form Create Post */}
+      <Header></Header>
       <div className="py-12">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
@@ -124,22 +131,19 @@ function CreatePost() {
                   <select
                     className="block w-full h-10 px-4 border-2 rounded-lg bg-grey-lighter text-grey-darker border-grey-lighter md:w-full "
                     required="required"
-                    name="list_category_id"
-                    id="list_category_id"
-                    {...register("list_category_id", { required: true })}
+                    name="categoriesId "
+                    id="categoriesId "
+                    {...register("categoriesId", { required: true })}
                   >
-                    <option value="1" key="1">
-                      Thể thao
-                    </option>
-                    <option value="1" key="1">
-                      Du lịch
-                    </option>
-                    <option value="1" key="1">
-                      Nghệ thuật
-                    </option>
-                    <option value="1" key="1">
-                      Văn hóa
-                    </option>
+                    {allCategorie ? (
+                      allCategorie.map(cate => (
+                        <option value={cate.id} key={cate.id}>
+                          {cate.name}
+                        </option>
+                      ))
+                    ) : (
+                      <option></option>
+                    )}
                   </select>
                 </div>
                 <div className="mb-4">
@@ -221,7 +225,7 @@ function CreatePost() {
                         className="hidden"
                         name="image"
                         id="image"
-                        onInputCapture={(e) => {
+                        onInputCapture={e => {
                           if (e.target.files[0]) {
                             if (
                               e.target.files[0].type === "image/png" ||
@@ -231,7 +235,7 @@ function CreatePost() {
                               let file = e.target.files[0];
                               if (file) {
                                 reader.readAsDataURL(e.target.files[0]);
-                                reader.onload = (e) => {
+                                reader.onload = e => {
                                   setCover(e.target.result);
                                 };
                               }
@@ -244,7 +248,7 @@ function CreatePost() {
                             }
                           }
                         }}
-                        onChange={(e) => {
+                        onChange={e => {
                           onImageStateChange(e);
                           console.log(e.target.value);
                         }}
@@ -297,7 +301,6 @@ function CreatePost() {
           </div>
         </div>
       </div>
-      {/* Footer */}
     </>
   );
 }

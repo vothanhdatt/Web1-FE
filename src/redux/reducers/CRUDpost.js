@@ -3,6 +3,7 @@ import _ from "lodash";
 import routes from "../../constant/routes";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "universal-cookie";
 
 const initialState = {
   isLoading: false,
@@ -10,167 +11,132 @@ const initialState = {
   error: null,
   data: null,
 };
-
-export const featurepostReducer = (state = initialState, action) => {
+export default function CRUDPostReducer(state = initialState, action) {
   let newState = {};
+  let cookie = new Cookies();
   switch (action.type) {
-    //FEATUREPOST
-    case actionTypes.FEATUREPOST_REQUEST:
+    //CREATE POST
+    case actionTypes.CREATE_POST_REQUEST:
       newState = _.cloneDeep(state);
       newState.isLoading = true;
 
       return newState;
 
-    case actionTypes.FEATUREPOST_SUCCESS:
+    case actionTypes.CREATE_POST_SUCCESS:
       newState = _.cloneDeep(state);
-      newState.isLoading = false;
+      newState.isLoading = true;
       newState.isSuccess = true;
 
       newState.data = action.payload;
+      toast("Tạo bài viết thành công. Vui lòng đợi admin duyệt.!");
+      window.location.href = routes.createpost;
 
       return newState;
 
-    case actionTypes.FEATUREPOST_FAILURE:
+    case actionTypes.CREATE_POST_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      console.log(action.error);
+      toast(action.error);
+      return newState;
+
+    //UPDATE POST
+    case actionTypes.UPDATE_POST_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.UPDATE_POST_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      toast("Cập nhật thành công.!");
+      newState.data = action.payload;
+      window.location.href = routes.profile;
+      return newState;
+
+    case actionTypes.UPDATE_POST_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      console.log("ERROR: ", action.error);
+      toast(action.error);
+      return newState;
+
+    //GET LIST POST BY USER
+    case actionTypes.GET_LIST_POST_BY_USER_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.GET_LIST_POST_BY_USER_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      newState.data = action.payload;
+      return newState;
+
+    case actionTypes.GET_LIST_POST_BY_USER_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      // console.log("ERROR: ", action.error);
+      toast(action.error);
+      return newState;
+
+    //DELETE POST
+    case actionTypes.DELETE_POST_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.DELETE_POST_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+      newState.isSuccess = true;
+      toast("xóa bài viết thành công.!");
+      // newState.data = action.payload;
+      return newState;
+
+    case actionTypes.DELETE_POST_FAILURE:
       newState = _.cloneDeep(state);
       newState.isLoading = false;
       newState.isSuccess = false;
       newState.error = action.error;
       toast(action.error);
       return newState;
-    default:
-      return state;
-  }
-};
-/* getPostByCategory
- * Call Call api tất cả bài viết theo category
- * Lấy tất cả bà viết
- */
-export const getPostByCategoryReducer = (state = initialState, action) => {
-  let newState = {};
-  switch (action.type) {
-    case actionTypes.GETPOSTBYCATEGORY_REQUEST:
+
+    //POST FILTER
+    case actionTypes.POST_FILTER_REQUEST:
       newState = _.cloneDeep(state);
       newState.isLoading = true;
 
       return newState;
 
-    case actionTypes.GETPOSTBYCATEGORY_SUCCESS:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
-      newState.isSuccess = true;
-
-      newState.data = action.payload;
-
-      return newState;
-
-    case actionTypes.GETPOSTBYCATEGORY_FAILURE:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
-      newState.isSuccess = false;
-      newState.error = action.error;
-      toast(action.error);
-      return newState;
-    default:
-      return state;
-  }
-};
-//GET  CATEGORIES
-/* GET aLL  CATEGORIES
- * Call Call api tất cả category
- */
-export const getCategoriesReducer = (state = initialState, action) => {
-  let newState = {};
-  switch (action.type) {
-    case actionTypes.GETCATEGORIES_REQUEST:
+    case actionTypes.POST_FILTER_SUCCESS:
       newState = _.cloneDeep(state);
       newState.isLoading = true;
-
-      return newState;
-
-    case actionTypes.GETCATEGORIES_SUCCESS:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
       newState.isSuccess = true;
 
       newState.data = action.payload;
-
       return newState;
 
-    case actionTypes.GETCATEGORIES_FAILURE:
+    case actionTypes.POST_FILTER_FAILURE:
       newState = _.cloneDeep(state);
       newState.isLoading = false;
       newState.isSuccess = false;
       newState.error = action.error;
+      console.log("ERROR: ", action.error);
       toast(action.error);
       return newState;
     default:
       return state;
   }
-};
-
-/*
- * getFeaturePost
-
- * Call api lấy bài viết nổibat
- */
-export const getFeaturePostReducer = (state = initialState, action) => {
-  let newState = {};
-  switch (action.type) {
-    case actionTypes.GETFEATUREPOST_REQUEST:
-      newState = _.cloneDeep(state);
-      newState.isLoading = true;
-
-      return newState;
-
-    case actionTypes.GETFEATUREPOST_SUCCESS:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
-      newState.isSuccess = true;
-
-      newState.data = action.payload;
-
-      return newState;
-
-    case actionTypes.GETFEATUREPOST_FAILURE:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
-      newState.isSuccess = false;
-      newState.error = action.error;
-      toast(action.error);
-      return newState;
-    default:
-      return state;
-  }
-};
-/* GET detailPost
- *   Call api lấy chi tiết bài viết
- */
-export const getDetailPostReducer = (state = initialState, action) => {
-  let newState = {};
-  switch (action.type) {
-    case actionTypes.GETDETAILPOST_REQUEST:
-      newState = _.cloneDeep(state);
-      newState.isLoading = true;
-
-      return newState;
-
-    case actionTypes.GETDETAILPOST_SUCCESS:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
-      newState.isSuccess = true;
-
-      newState.data = action.payload;
-
-      return newState;
-
-    case actionTypes.GETDETAILPOST_FAILURE:
-      newState = _.cloneDeep(state);
-      newState.isLoading = false;
-      newState.isSuccess = false;
-      newState.error = action.error;
-      toast(action.error);
-      return newState;
-    default:
-      return state;
-  }
-};
+}

@@ -1,20 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { NavLink, link } from "react-router-dom";
 import "../css/Header.css";
 import route from "../constant/routes";
 import { Link } from "react-router-dom";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { useDispatch, useSelector } from "react-redux";
 
+//* Header
 Header.propTypes = {};
 
 function Header(props) {
-  const dispatch = useDispatch();
   //onchange get value option
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   const onchange = (e) => {
     props.parenCallBack(e.target.value);
   };
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   const { listCategories } = props;
   return (
     <nav className="navbar">
@@ -32,18 +37,20 @@ function Header(props) {
           ))}
         </select>
       ) : (
-        <div>hihi</div>
+        <div></div>
       )}
 
       <div className="links">
-        <Link to={route.homepage}>Home</Link>
-        <a href="/Posts.js">Posts</a>
-        <a href="/Register.js" className="sign-in">
-          Sign in
-        </a>
-        <a href="/sign-in" className="Resgister">
+        <Link to={route.homepage}> Home</Link>
+        <Link to="./Posts"> Posts</Link>
+        <Link to="./Register" className="sign-in">
+          {" "}
           Register
-        </a>
+        </Link>
+        <Link to="./Login" className="Resgister">
+          {" "}
+          Login
+        </Link>
       </div>
     </nav>
   );

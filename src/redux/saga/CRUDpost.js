@@ -4,198 +4,182 @@ console.log(actionType);
 
 // eslint-disable-next-line
 export default {
-  //FEATUREPOST
-  featurepostSaga: function* (action) {
+  //CREATE POST
+  createPostSaga: function* (action) {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
-        "get",
-        "featurest-posts",
+        "post",
+        "create-post",
         payload,
         true
       );
-
       if (response.data) {
         let responseData = response.data;
         if (responseData.data) {
           yield put({
-            type: actionType.FEATUREPOST_SUCCESS,
+            type: actionType.CREATE_POST_SUCCESS,
             payload: responseData.data,
           });
         } else {
           yield put({
-            type: actionType.FEATUREPOST_FAILURE,
-            error: responseData.message,
+            type: actionType.CREATE_POST_FAILURE,
+            error: responseData.error,
           });
         }
       } else {
         yield put({
-          type: actionType.FEATUREPOST_FAILURE,
+          type: actionType.CREATE_POST_FAILURE,
           error: "Something went wrong!",
         });
       }
     } catch (error) {
       yield put({
-        type: actionType.FEATUREPOST_FAILURE,
+        type: actionType.CREATE_POST_FAILURE,
         error: "Something went wrong!",
       });
     }
   },
-  //GET POST BY CATEGORY
-  /* getPostByCategory
-   * Call Call api tất cả bài viết theo category
-   * Lấy tất cả bà viết
-   */
-  getPostByCategorySaga: function* (action) {
+  //UPDATE POST
+  updatePostSaga: function* (action) {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
-        "get",
-        "get-post-by-category",
-        payload
+        "post",
+        "update-post",
+        payload,
+        true
       );
-
       if (response.data) {
         let responseData = response.data;
         if (responseData.data) {
           yield put({
-            type: actionType.GETPOSTBYCATEGORY_SUCCESS,
+            type: actionType.UPDATE_POST_SUCCESS,
             payload: responseData.data,
           });
         } else {
           yield put({
-            type: actionType.GETPOSTBYCATEGORY_FAILURE,
-            error: responseData.message,
+            type: actionType.UPDATE_POST_FAILURE,
+            error: responseData.error,
           });
         }
       } else {
         yield put({
-          type: actionType.GETPOSTBYCATEGORY_FAILURE,
+          type: actionType.UPDATE_POST_FAILURE,
           error: "Something went wrong!",
         });
       }
     } catch (error) {
       yield put({
-        type: actionType.GETPOSTBYCATEGORY_FAILURE,
+        type: actionType.UPDATE_POST_FAILURE,
         error: "Something went wrong!",
       });
     }
   },
-  //GET  CATEGORIES
-  /* GET aLL  CATEGORIES
-   * Call Call api tất cả category
-   */
-  getCategoriesSaga: function* (action) {
+  //GET LIST POST BY USER
+  getListPostByUserSaga: function* (action) {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
         "get",
-        "get-all-categories",
-        payload
+        "get-all-post",
+        payload,
+        true
       );
-
       if (response.data) {
         let responseData = response.data;
         if (responseData.data) {
           yield put({
-            type: actionType.GETCATEGORIES_SUCCESS,
+            type: actionType.GET_LIST_POST_BY_USER_SUCCESS,
             payload: responseData.data,
           });
         } else {
           yield put({
-            type: actionType.GETCATEGORIES_FAILURE,
-            error: responseData.message,
+            type: actionType.GET_LIST_POST_BY_USER_FAILURE,
+            error: responseData.error,
           });
         }
       } else {
         yield put({
-          type: actionType.GETCATEGORIES_FAILURE,
+          type: actionType.GET_LIST_POST_BY_USER_FAILURE,
           error: "Something went wrong!",
         });
       }
     } catch (error) {
       yield put({
-        type: actionType.GETCATEGORIES_FAILURE,
+        type: actionType.GET_LIST_POST_BY_USER_FAILURE,
         error: "Something went wrong!",
       });
     }
   },
-  //GET  FEATURE POST
-  /*
- * getFeaturePost
-
- * Call api lấy bài viết nổibat
- */
-  getFeaturePostSaga: function* (action) {
+  //DELETE POST
+  deletePostSaga: function* (action) {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
-        "get",
-        "get-feature-post",
-        payload
+        "post",
+        "delete-post",
+        payload,
+        false
       );
-
       if (response.data) {
         let responseData = response.data;
         if (responseData.data) {
           yield put({
-            type: actionType.GETFEATUREPOST_SUCCESS,
+            type: actionType.DELETE_POST_SUCCESS,
             payload: responseData.data,
           });
         } else {
           yield put({
-            type: actionType.GETFEATUREPOST_FAILURE,
-            error: responseData.message,
+            type: actionType.DELETE_POST_FAILURE,
+            error: responseData.error,
           });
         }
       } else {
         yield put({
-          type: actionType.GETFEATUREPOST_FAILURE,
+          type: actionType.DELETE_POST_FAILURE,
           error: "Something went wrong!",
         });
       }
     } catch (error) {
       yield put({
-        type: actionType.GETFEATUREPOST_FAILURE,
+        type: actionType.DELETE_POST_FAILURE,
         error: "Something went wrong!",
       });
     }
   },
-  //GET DETAIL POST
-  /* GET detailPost
-   *   Call api lấy chi tiết bài viết
-   */
-  getDetailPostSaga: function* (action) {
+  //POST FILTER
+  postFilterSaga: function* (action) {
     let payload = action.payload;
     try {
       let response = yield global.apiService.apiCall(
         "get",
-        "post-detail",
-        payload
+        "...",
+        payload,
+        false
       );
-
       if (response.data) {
         let responseData = response.data;
         if (responseData.data) {
           yield put({
-            type: actionType.GETDETAILPOST_SUCCESS,
+            type: actionType.POST_FILTER_SUCCESS,
             payload: responseData.data,
           });
         } else {
           yield put({
-            type: actionType.GETDETAILPOST_FAILURE,
-            error: responseData.message,
+            type: actionType.POST_FILTER_FAILURE,
+            error: responseData.error,
           });
         }
       } else {
         yield put({
-          type: actionType.GETDETAILPOST_FAILURE,
+          type: actionType.POST_FILTER_FAILURE,
           error: "Something went wrong!",
         });
       }
     } catch (error) {
       yield put({
-        type: actionType.GETDETAILPOST_FAILURE,
+        type: actionType.POST_FILTER_FAILURE,
         error: "Something went wrong!",
       });
     }

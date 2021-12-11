@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from "react";
 import FeaturePost from "../../components/FeaturePost";
+import FeatureMember from "../../components/FeatureMember";
 import ListPost from "../../components/ListPost";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getCategoriesRequest,
+  getFeaturePostRequest,
   getPostByCategoryRequest,
+  getFeatureMemberRequest,
 } from "../../redux/actions";
-import { Link, Redirect, useHistory } from "react-router-dom";
 import Header from "../../components/Header";
-import Pagination from "../../components/Pagination";
 
 HomePage.propTypes = {};
 
 function HomePage(props) {
   const dispatch = useDispatch();
-
+  //get featureMember
+  const getFeatureMember = useSelector(
+    (state) => state.getFeatureMemberReducer.data
+  );
+  useEffect(() => {
+    dispatch(getFeatureMemberRequest());
+  }, []);
   //listCategories
+  //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   const getlistCategories = useSelector(
     (state) => state.getCategoriesReducer.data
   );
@@ -23,6 +34,10 @@ function HomePage(props) {
     dispatch(getCategoriesRequest());
   }, []);
   //getPostByCategory
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   const getPostByCategory = useSelector(
     (state) => state.getPostByCategoryReducer.data
   );
@@ -38,13 +53,18 @@ function HomePage(props) {
       })
     );
   }, [category]);
-  const [pagination, setPagination] = useState(1);
+  /*
+ * getFeaturePost
 
-  function handlePageChange(newPage) {
-    setPagination(newPage);
-    console.log("newpage:" + newPage);
-  }
-
+ * Call api lấy bài viết nổibat
+  Hiển thị ra giao diện
+ */
+  const getFeaturePost = useSelector(
+    (state) => state.getFeaturePostReducer.data
+  );
+  useEffect(() => {
+    dispatch(getFeaturePostRequest());
+  }, []);
   if (getPostByCategory) {
     return (
       <>
@@ -53,19 +73,17 @@ function HomePage(props) {
             listCategories={getlistCategories}
             parenCallBack={callbackFuntion}
           />
-          <div className="grid-cols-3 grid-rows-1 gap-4 mx-auto max-w-7xl lg:grid my-7 ">
+          <div className="grid-cols-3 grid-rows-1 gap-4 mx-auto max-w-5xl lg:grid my-7 ">
             <div className="col-span-1">
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
               <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
-                Bài Viết Nổi Bật <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
-                <FeaturePost />
+                Bài Viết Nổi Bật
               </h1>
+              <FeaturePost featurePost={getFeaturePost} />
+              <h1 className="pb-1 pl-2 mt-5 text-lg font-bold text-left">
+                Thành Viên Nổi Bật
+              </h1>
+              <FeatureMember listUser={getFeatureMember} />
               <div className="flex flex-row overflow-auto lg:flex-col"></div>
             </div>
             <div className="col-span-2">
@@ -75,12 +93,15 @@ function HomePage(props) {
               </h1>
             </div>
           </div>
-          <Pagination pagination={pagination} onPageChange={handlePageChange} />
         </div>
       </>
     );
   } else {
-    return <div>12345</div>;
+    return (
+      <div className="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
+        <div className="animate-spin rounded-full h-40 w-40 border-t-4 border-b-4 border-purple-500"></div>
+      </div>
+    );
   }
 }
 export default HomePage;
