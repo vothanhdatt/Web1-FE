@@ -169,6 +169,9 @@ export const getDetailPostReducer = (state = initialState, action) => {
       newState.isSuccess = false;
       newState.error = action.error;
       toast(action.error);
+      setTimeout(() => {
+        window.location.href = routes.homepage;
+      }, 3000);
       return newState;
     default:
       return state;
