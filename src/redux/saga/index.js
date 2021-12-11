@@ -71,6 +71,8 @@ function* rootSaga() {
   );
   //LOGIN
   yield takeEvery(actionTypes.LOGIN_REQUEST, auth.loginSaga);
+   //LOGOUT
+  yield takeEvery(actionTypes.LOGOUT_REQUEST, auth.logoutSaga);
   //REGISTER
   yield takeEvery(actionTypes.REGISTER_REQUEST, auth.registerSaga);
   //ResetPass
