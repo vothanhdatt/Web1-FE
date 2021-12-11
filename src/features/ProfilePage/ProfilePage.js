@@ -162,20 +162,20 @@ export default function ProfilePage() {
                       <div className="flex justify-center py-4 lg:pt-4 pt-8">
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            100
+                            {profile.postTotal}
                           </span>
                           <span className="text-sm text-gray-500">Posts</span>
                         </div>
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            4.5
+                            {profile.starAvg + " "}
                             <i className="fa fa-star" aria-hidden="true"></i>
                           </span>
                           <span className="text-sm text-gray-500">Rating</span>
                         </div>
                         <div className="lg:mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            89
+                            {profile.commentTotal}
                           </span>
                           <span className="text-sm text-gray-500">
                             Comments

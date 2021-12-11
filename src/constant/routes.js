@@ -1,5 +1,5 @@
 const routes = {
-  homepage: "/homepage",
+  homepage: "/",
   // FEATURE VIEW PROFILE
   profile: "/profile",
   detail: "/detail",
