@@ -41,4 +41,78 @@ export default {
       });
     }
   },
+  //GET RELATED POST
+  getRelatedPostSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "get",
+        "get-related-post",
+        payload
+        // true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.GET_RELATED_POST_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.GET_RELATED_POST_FAILURE,
+            error: responseData.message,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.GET_RELATED_POST_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.GET_RELATED_POST_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
+  //GET FeatureMember
+  getFeatureMemberSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "get",
+        "get-members-hightlight",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.GET_FEATURE_MEMBER_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.GET_FEATURE_MEMBER_FAILURE,
+            error: responseData.message,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.GET_FEATURE_MEMBER_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.GET_FEATURE_MEMBER_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
 };
