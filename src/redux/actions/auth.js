@@ -20,6 +20,18 @@ export const loginRequest = payload => {
     payload: payload,
   };
 };
+//LOGOUT
+export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+
+export const logoutRequest = payload => {
+  return {
+    type: LOGOUT_REQUEST,
+    payload: payload,
+  };
+};
+
 //REGISTER
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
