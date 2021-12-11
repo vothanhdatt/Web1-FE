@@ -10,7 +10,6 @@ function App() {
   return (
     <LoadingOverlay active={false} spinner>
       <Router>
-        {/* <Header /> */}
         <div className="App">{RouteContainer}</div>
         <Footer />
       </Router>

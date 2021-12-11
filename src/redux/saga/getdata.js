@@ -115,4 +115,79 @@ export default {
       });
     }
   },
+  //GET comment
+  getCommentSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "get",
+        "get-rating-post",
+        payload
+        // true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.GET_COMMENT_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.GET_COMMENT_FAILURE,
+            error: responseData.message,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.GET_COMMENT_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.GET_COMMENT_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
+
+  //POST comment
+  postCommentSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "create-rating-post",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.data) {
+          yield put({
+            type: actionType.POST_COMMENT_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.POST_COMMENT_FAILURE,
+            error: responseData.message,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.POST_COMMENT_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.POST_COMMENT_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
 };

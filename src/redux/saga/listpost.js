@@ -17,7 +17,7 @@ export default {
 
       if (response.data) {
         let responseData = response.data;
-        if (responseData.data) {
+        if (responseData.isSuccess) {
           yield put({
             type: actionType.FEATUREPOST_SUCCESS,
             payload: responseData.data,
@@ -25,7 +25,7 @@ export default {
         } else {
           yield put({
             type: actionType.FEATUREPOST_FAILURE,
-            error: responseData.message,
+            error: responseData.error,
           });
         }
       } else {
@@ -176,7 +176,7 @@ export default {
 
       if (response.data) {
         let responseData = response.data;
-        if (responseData.data) {
+        if (responseData.isSuccess == true) {
           yield put({
             type: actionType.GETDETAILPOST_SUCCESS,
             payload: responseData.data,
@@ -184,7 +184,7 @@ export default {
         } else {
           yield put({
             type: actionType.GETDETAILPOST_FAILURE,
-            error: responseData.message,
+            error: responseData.error,
           });
         }
       } else {

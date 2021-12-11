@@ -24,12 +24,14 @@ export default function CRUDPostReducer(state = initialState, action) {
 
     case actionTypes.CREATE_POST_SUCCESS:
       newState = _.cloneDeep(state);
-      newState.isLoading = true;
+      newState.isLoading = false;
       newState.isSuccess = true;
 
       newState.data = action.payload;
       toast("Tạo bài viết thành công. Vui lòng đợi admin duyệt.!");
-      window.location.href = routes.createpost;
+      setTimeout(() => {
+        window.location.href = routes.createpost;
+      }, 2000);
 
       return newState;
 
@@ -51,11 +53,14 @@ export default function CRUDPostReducer(state = initialState, action) {
 
     case actionTypes.UPDATE_POST_SUCCESS:
       newState = _.cloneDeep(state);
-      newState.isLoading = true;
+      newState.isLoading = false;
       newState.isSuccess = true;
       toast("Cập nhật thành công.!");
       newState.data = action.payload;
-      window.location.href = routes.profile;
+      setTimeout(() => {
+        window.location.href = routes.profile;
+      }, 2000);
+
       return newState;
 
     case actionTypes.UPDATE_POST_FAILURE:
@@ -76,7 +81,7 @@ export default function CRUDPostReducer(state = initialState, action) {
 
     case actionTypes.GET_LIST_POST_BY_USER_SUCCESS:
       newState = _.cloneDeep(state);
-      newState.isLoading = true;
+      newState.isLoading = false;
       newState.isSuccess = true;
       newState.data = action.payload;
       return newState;
@@ -99,9 +104,10 @@ export default function CRUDPostReducer(state = initialState, action) {
 
     case actionTypes.DELETE_POST_SUCCESS:
       newState = _.cloneDeep(state);
-      newState.isLoading = true;
+      newState.isLoading = false;
       newState.isSuccess = true;
       toast("xóa bài viết thành công.!");
+
       // newState.data = action.payload;
       return newState;
 
@@ -122,7 +128,7 @@ export default function CRUDPostReducer(state = initialState, action) {
 
     case actionTypes.POST_FILTER_SUCCESS:
       newState = _.cloneDeep(state);
-      newState.isLoading = true;
+      newState.isLoading = false;
       newState.isSuccess = true;
 
       newState.data = action.payload;
