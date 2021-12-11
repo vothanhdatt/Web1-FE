@@ -31,3 +31,26 @@ export const getRelatedPostRequest = (payload) => {
     payload: payload,
   };
 };
+//GET COMMENT Post
+export const GET_COMMENT_REQUEST = "GET_COMMENT_REQUEST";
+export const GET_COMMENT_SUCCESS = "GET_COMMENT_SUCCESS";
+export const GET_COMMENT_FAILURE = "GET_COMMENT_FAILURE";
+
+export const getCommentRequest = (payload) => {
+  return {
+    type: GET_COMMENT_REQUEST,
+    payload: payload,
+  };
+};
+
+//POST COMMENT Post
+export const POST_COMMENT_REQUEST = "POST_COMMENT_REQUEST";
+export const POST_COMMENT_SUCCESS = "POST_COMMENT_SUCCESS";
+export const POST_COMMENT_FAILURE = "POST_COMMENT_FAILURE";
+
+export const postCommentRequest = (payload) => {
+  return {
+    type: POST_COMMENT_REQUEST,
+    payload: payload,
+  };
+};
