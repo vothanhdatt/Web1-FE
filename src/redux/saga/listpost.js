@@ -42,6 +42,10 @@ export default {
     }
   },
   //GET POST BY CATEGORY
+  /* getPostByCategory
+   * Call Call api tất cả bài viết theo category
+   * Lấy tất cả bà viết
+   */
   getPostByCategorySaga: function* (action) {
     let payload = action.payload;
     try {
@@ -78,6 +82,9 @@ export default {
     }
   },
   //GET  CATEGORIES
+  /* GET aLL  CATEGORIES
+   * Call Call api tất cả category
+   */
   getCategoriesSaga: function* (action) {
     let payload = action.payload;
     try {
@@ -114,6 +121,11 @@ export default {
     }
   },
   //GET  FEATURE POST
+  /*
+ * getFeaturePost
+
+ * Call api lấy bài viết nổibat
+ */
   getFeaturePostSaga: function* (action) {
     let payload = action.payload;
     try {
@@ -150,6 +162,9 @@ export default {
     }
   },
   //GET DETAIL POST
+  /* GET detailPost
+   *   Call api lấy chi tiết bài viết
+   */
   getDetailPostSaga: function* (action) {
     let payload = action.payload;
     try {

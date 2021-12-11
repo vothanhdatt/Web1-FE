@@ -148,9 +148,9 @@ function UpdatePost(props) {
                   <div className="flex flex-col w-full mb-3">
                     <input
                       className="hidden"
-                      name="post_id"
+                      name="postID"
                       defaultValue={postData.id}
-                      {...register("post_id")}
+                      {...register("postID")}
                     ></input>
                     <label className="py-2 text-xl font-semibold text-gray-600">
                       Category <span className="text-red-500">*</span>
@@ -158,10 +158,10 @@ function UpdatePost(props) {
                     <select
                       className="block w-full h-10 px-4 border-2 rounded-lg bg-grey-lighter text-grey-darker border-grey-lighter md:w-full "
                       required="required"
-                      name="list_category_id"
-                      id="list_category_id"
+                      name="categoriesId"
+                      id="categoriesId"
                       defaultValue={postData.listCateId}
-                      {...register("list_category_id", { required: true })}
+                      {...register("categoriesId", { required: true })}
                     >
                       {allCategorie ? (
                         allCategorie.map(cate => (

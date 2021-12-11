@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import env from "../env";
-
+/* getPostByCategory
+ * Call Call api tất cả bài viết theo category
+ * Lấy tất cả bà viết
+ * Hiển thị ra giao diện
+ */
 ListPost.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
@@ -38,7 +42,7 @@ function ListPost(props) {
     const slice = post.slice(0, noOfElement);
     return (
       <>
-        {slice.map(post => (
+        {slice.map((post) => (
           <div
             className="flex p-2 py-3 rounded-lg hover:bg-gray-200 items-start"
             key={post.id}
@@ -65,7 +69,7 @@ function ListPost(props) {
                 <div className="mr-3 w-6 h-6 ">
                   <img
                     className="w-6 h-6 border-2 border-blue-500 rounded-full "
-                    src={post.authorAvatar}
+                    src={env.URL_IMAGE + post.authorAvatar}
                   />
                 </div>
                 <div className="">
