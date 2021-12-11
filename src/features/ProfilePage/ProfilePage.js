@@ -9,6 +9,7 @@ import {
   getProfileRequest,
   getListPostByUserRequest,
   deletePostRequest,
+  getFeatureMemberRequest,
 } from "../../redux/actions";
 import ProfilePost from "../../components/ProiflePost";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +19,7 @@ import routes from "../../constant/routes";
 // Components
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import FeatureMember from "../../components/FeatureMember";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -69,12 +71,16 @@ export default function ProfilePage() {
   useEffect(() => {
     dispatch(getProfileRequest());
     dispatch(getListPostByUserRequest());
+    dispatch(getFeatureMemberRequest());
   }, []);
   useEffect(() => {
     dispatch(getListPostByUserRequest());
   }, [idDel]);
   const profile = useSelector(state => state.getProfileReducer.data);
   const listPost = useSelector(state => state.CRUDPostReducer.data);
+  const listFeaturestUser = useSelector(
+    state => state.getFeatureMemberReducer.data
+  );
 
   return (
     <>
@@ -156,20 +162,20 @@ export default function ProfilePage() {
                       <div className="flex justify-center py-4 lg:pt-4 pt-8">
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            100
+                            {profile.postTotal}
                           </span>
                           <span className="text-sm text-gray-500">Posts</span>
                         </div>
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            4.5
+                            {profile.starAvg + " "}
                             <i className="fa fa-star" aria-hidden="true"></i>
                           </span>
                           <span className="text-sm text-gray-500">Rating</span>
                         </div>
                         <div className="lg:mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            89
+                            {profile.commentTotal}
                           </span>
                           <span className="text-sm text-gray-500">
                             Comments
@@ -279,7 +285,7 @@ export default function ProfilePage() {
                 Thành Viên Nổi Bật{" "}
               </h1>
               <div className="flex flex-row overflow-auto lg:flex-col">
-                Đây là thành viên nổi bật
+                <FeatureMember listUser={listFeaturestUser} />
               </div>
             </div>
           </div>

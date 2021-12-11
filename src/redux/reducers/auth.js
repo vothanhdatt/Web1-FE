@@ -30,7 +30,7 @@ export default function authReducer(state = initialState, action) {
       newState.data = action.payload;
       toast("Đổi mật khẩu thành công!");
       // cookie.remove("_token");
-      window.location.href = routes.login;
+      window.location.href = routes.Login;
 
       return newState;
 
@@ -68,6 +68,59 @@ export default function authReducer(state = initialState, action) {
       toast(action.error);
       return newState;
 
+      //ResetPass
+    case actionTypes.RESETPASS_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+      case actionTypes.RESETPASS_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+      console.log("ajajjaa" + action.payload);
+      newState.data = action.payload;
+      cookie.set("_token", action.payload);
+      toast("Gửi mã thành công!");
+      window.location.href = routes.Resetpass;
+
+      return newState;
+
+    case actionTypes.RESETPASS_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
+
+       //ConfirmPass
+    case actionTypes.CONFIRMPASS_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+      case actionTypes.CONFIRMPASS_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+      console.log("ajajjaa" + action.payload);
+      newState.data = action.payload;
+      cookie.set("_token", action.payload);
+      toast("Cập Nhật Mật Khẩu thành công!");
+      window.location.href = routes.Login;
+
+      return newState;
+
+    case actionTypes.CONFIRMPASS_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
     //Register
     case actionTypes.REGISTER_REQUEST:
       newState = _.cloneDeep(state);
