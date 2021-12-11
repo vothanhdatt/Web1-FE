@@ -9,6 +9,7 @@ import {
   getProfileRequest,
   getListPostByUserRequest,
   deletePostRequest,
+  getFeatureMemberRequest,
 } from "../../redux/actions";
 import ProfilePost from "../../components/ProiflePost";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +19,7 @@ import routes from "../../constant/routes";
 // Components
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import FeatureMember from "../../components/FeatureMember";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -52,16 +54,33 @@ export default function ProfilePage() {
     );
     setIdDel(id);
   };
+  const onFilterSubmit = FormData => {
+    //
+  };
+
+  //
+  const [dateFilter, setDateFilter] = useState(false);
+  const onHandleFilter = e => {
+    if (e.target.value === "date") {
+      setDateFilter(true);
+    } else {
+      setDateFilter(false);
+    }
+  };
   //
   useEffect(() => {
     dispatch(getProfileRequest());
     dispatch(getListPostByUserRequest());
+    dispatch(getFeatureMemberRequest());
   }, []);
   useEffect(() => {
     dispatch(getListPostByUserRequest());
   }, [idDel]);
   const profile = useSelector(state => state.getProfileReducer.data);
   const listPost = useSelector(state => state.CRUDPostReducer.data);
+  const listFeaturestUser = useSelector(
+    state => state.getFeatureMemberReducer.data
+  );
 
   return (
     <>
@@ -143,20 +162,20 @@ export default function ProfilePage() {
                       <div className="flex justify-center py-4 lg:pt-4 pt-8">
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            100
+                            {profile.postTotal}
                           </span>
                           <span className="text-sm text-gray-500">Posts</span>
                         </div>
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            4.5
+                            {profile.starAvg + " "}
                             <i className="fa fa-star" aria-hidden="true"></i>
                           </span>
                           <span className="text-sm text-gray-500">Rating</span>
                         </div>
                         <div className="lg:mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                            89
+                            {profile.commentTotal}
                           </span>
                           <span className="text-sm text-gray-500">
                             Comments
@@ -193,8 +212,53 @@ export default function ProfilePage() {
               </div>
             </div>
           </section>
-          <div className="grid-cols-6 grid-rows-1 gap-4 mx-auto max-w-6xl lg:grid my-7 px-10 ">
-            <div className="col-span-6">
+          <div className="grid-cols-6 grid-rows-1 gap-4 mx-auto max-w-full lg:grid my-7 px-10 ">
+            <div className="col-span-1 mb-5 mx-5 lg:mx-1 ">
+              <div className="bg-white shadow-md rounded-lg overflow-hidden mx-auto w-full p-5">
+                <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                  Filter{" "}
+                </h1>
+                <form onSubmit={handleSubmit(onFilterSubmit)}>
+                  <label className="block text-grey-darker text-sm mb-1 mt-2">
+                    <select
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      {...register("order_by")}
+                    >
+                      <option value="ASC">Tăng</option>
+                      <i className="fa fa-arrow-up" aria-hidden="true"></i>
+                      <option value="DESC">Giảm</option>
+                    </select>
+                  </label>
+                  <label className="block text-grey-darker text-sm mb-1 mt-2">
+                    <select
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      onChangeCapture={e => onHandleFilter(e)}
+                      {...register("filter_by", { required: true })}
+                    >
+                      <option value="name">Name</option>
+                      <option value="created_at">Created At</option>
+                      <option value="date">Date</option>
+                    </select>
+                  </label>
+                  {dateFilter && (
+                    <input
+                      className="form-select block shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-grey-darker leading-tight"
+                      required="required"
+                      type="date"
+                      name="time"
+                      id="time"
+                      {...register("time")}
+                    />
+                  )}
+                  <div className="flex justify-center mt-2">
+                    <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                      Filter
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="col-span-4">
               {listPost ? (
                 <div>
                   <div className="bg-gray-200   justify-center">
@@ -214,6 +278,14 @@ export default function ProfilePage() {
                 <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                   Loadmore
                 </button>
+              </div>
+            </div>
+            <div className="col-span-1">
+              <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
+                Thành Viên Nổi Bật{" "}
+              </h1>
+              <div className="flex flex-row overflow-auto lg:flex-col">
+                <FeatureMember listUser={listFeaturestUser} />
               </div>
             </div>
           </div>

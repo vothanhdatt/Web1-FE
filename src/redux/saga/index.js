@@ -46,6 +46,20 @@ function* rootSaga() {
     actionTypes.GET_ALL_CATEGORIE_REQUEST,
     getdata.getAllCategorieSaga
   );
+  // GET ALL CATEGORIES
+  yield takeEvery(
+    actionTypes.GET_RELATED_POST_REQUEST,
+    getdata.getRelatedPostSaga
+  );
+  // get featureMember
+  yield takeEvery(
+    actionTypes.GET_FEATURE_MEMBER_REQUEST,
+    getdata.getFeatureMemberSaga
+  );
+  // get comment
+  yield takeEvery(actionTypes.GET_COMMENT_REQUEST, getdata.getCommentSaga);
+  // POST comment
+  yield takeEvery(actionTypes.POST_COMMENT_REQUEST, getdata.postCommentSaga);
   // CREATE POST
   yield takeEvery(actionTypes.CREATE_POST_REQUEST, CRUDpost.createPostSaga);
   // CHANGE PASSWORD
@@ -55,9 +69,19 @@ function* rootSaga() {
     actionTypes.GET_LIST_POST_BY_USER_REQUEST,
     CRUDpost.getListPostByUserSaga
   );
+  //LOGIN
+  yield takeEvery(actionTypes.LOGIN_REQUEST, auth.loginSaga);
+  //REGISTER
+  yield takeEvery(actionTypes.REGISTER_REQUEST, auth.registerSaga);
+  //ResetPass
+  yield takeEvery(actionTypes.RESETPASS_REQUEST, auth.resetpassSaga);
+  //ConfirmPass
+  yield takeEvery(actionTypes.CONFIRMPASS_REQUEST, auth.confirmpassSaga);
   // DELETE POST
   yield takeEvery(actionTypes.DELETE_POST_REQUEST, CRUDpost.deletePostSaga);
   // UPDATE POST
   yield takeEvery(actionTypes.UPDATE_POST_REQUEST, CRUDpost.updatePostSaga);
+  //POST FILTER
+  yield takeEvery(actionTypes.POST_FILTER_REQUEST, CRUDpost.postFilterSaga);
 }
 export default rootSaga;

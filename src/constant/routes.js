@@ -1,5 +1,5 @@
 const routes = {
-  homepage: "/homepage",
+  homepage: "/",
   // FEATURE VIEW PROFILE
   profile: "/profile",
   detail: "/detail",
@@ -7,6 +7,7 @@ const routes = {
   Login: "/Login",
   Register: "/Register",
   Pass: "/Pass",
+  Resetpass: "/ResetPass",
   /* GET detailPost
    *   Call api lấy chi tiết bài viết
    * Hiển thị ra giao diện
