@@ -2,7 +2,12 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailPostRequest, getProfileRequest } from "../../redux/actions";
+import {
+  getCommentRequest,
+  getDetailPostRequest,
+  getProfileRequest,
+  postCommentRequest,
+} from "../../redux/actions";
 import * as moment from "moment";
 import env from "../../env";
 import FeaturesPost from "../../components/FeaturePost";
@@ -40,22 +45,13 @@ function DetailPost(props) {
   const getFeaturePost = useSelector(
     (state) => state.getFeaturePostReducer.data
   );
+  const getComment = useSelector((state) => state.getCommentReducer.data);
   useEffect(() => {
     dispatch(getFeaturePostRequest());
     if (cookie.get("_token")) {
-      dispatch(
-        getProfileRequest()
-        //   (cookie.get("_token")),
-      );
+      dispatch(getProfileRequest());
     }
   }, []);
-
-  // get star
-  const [star, setStar] = useState("");
-  const callbackFunction = (childData) => {
-    setStar(childData);
-  };
-
   /* Call api lấy bài viết Lien quan
   Hiển thị ra giao diện
  */
@@ -71,12 +67,10 @@ function DetailPost(props) {
   }, [props.match.params.id]);
 
   const memberProfile = useSelector((state) => state.getProfileReducer.data);
-
   //data to comment
   const [data, setData] = useState(0);
   //get content textarea
   const [commentText, setCommentText] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(commentText);
@@ -87,6 +81,29 @@ function DetailPost(props) {
       setCommentText("");
     }, 3000);
   };
+
+  // get star
+  const [star, setStar] = useState("");
+  const callbackFunction = (childData) => {
+    setStar(childData);
+  };
+  //đánh giá
+  useEffect(() => {
+    if (cookie.get("_token")) {
+      dispatch(
+        postCommentRequest({
+          post_id: props.match.params.id,
+          star_rating: star,
+          text_content: commentText,
+        })
+      );
+      dispatch(
+        getCommentRequest({
+          post_id: props.match.params.id,
+        })
+      );
+    }
+  }, [data]);
 
   if (getDetailPost) {
     return (
@@ -241,7 +258,7 @@ function DetailPost(props) {
               </h1>
             </div>
           )}
-          <Comment />
+          <Comment commentPost={getComment} />
         </div>
       </div>
     );

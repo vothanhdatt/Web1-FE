@@ -72,6 +72,7 @@ const getComponent = (number) => {
           </span>
         </div>,
       ];
+
     case 2:
       return [
         <div className="flex mt-0.5 mr-1">
@@ -314,22 +315,22 @@ function Comment(props) {
     return (
       <>
         {slice.map((data) => (
-          <div className="flex px-2 mt-2" key={data.comment.id}>
+          <div className="flex px-2 mt-2" key={data.id}>
             <div className="content-center w-8 h-8 mt-1 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-12 xl:h-12">
               <img
                 className="w-8 h-8 border-2 border-blue-500 rounded-full md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-12 xl:h-12"
-                src={data.author.avatar}
+                src={data.authorAvatar}
               />
             </div>
             <div className="flex flex-col items-center w-full mt-1 ml-2 bg-gray-200 sm:ml-4 rounded-xl">
               <div className="flex flex-col w-full h-auto text-xs sm:text-sm md:text-base lg:text-lg">
                 <div className="flex pl-2">
                   <Link className="pr-2 font-bold text-blue-600">
-                    {data.author.first_name} {data.author.last_name}{" "}
+                    {data.members_first_name} {data.members_last_name}{" "}
                   </Link>
-                  <span>{getComponent(data.comment.star_rating)}</span>
+                  <span>{getComponent(data.star_rating)}</span>
                   <span className="text-xs sm:text-sm sm:mt-1 md:mt-0 lg:mt-0 md:text-base">
-                    {" " + moment(data.comment.created_at).format("DD/MM/YYYY")}
+                    {" " + moment(data.created_at).format("DD/MM/YYYY")}
                   </span>
                 </div>
                 <span className="p-2 pt-0">
@@ -340,7 +341,7 @@ function Comment(props) {
                     readMoreClassName="text-blue-600 px-2"
                     readLessClassName="text-blue-600 px-2"
                   >
-                    {data.comment.text_content}
+                    {data.text_content}
                   </ReactReadMoreReadLess>
                 </span>
               </div>
