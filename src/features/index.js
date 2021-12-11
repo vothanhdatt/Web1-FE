@@ -23,8 +23,8 @@ export default (
     <Route exact path={route.profile} component={ProfilePage} />
     <Route exact path={route.createpost} component={CreatePost} />
     <Route exact path={route.homepage} component={homepage} />
-    <Route exact path={route.Login} component={Login} />
-    <Route exact path={route.Register} component={Register} />
+    <Route exact path={route.login} component={Login} />
+    <Route exact path={route.register} component={Register} />
     <Route exact path={route.Pass} component={Pass} />
     <Route exact path={route.Resetpass} component={ResetPass} />
     <Route exact path={route.updateprofile} component={UpdateProfile} />

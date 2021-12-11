@@ -79,6 +79,43 @@ export default {
       });
     }
   },
+  //LOGOUT
+  logoutSaga: function* (action) {
+    let payload = action.payload;
+    try {
+      let response = yield global.apiService.apiCall(
+        "post",
+        "member-logout",
+        payload,
+        true
+      );
+
+      if (response.data) {
+        let responseData = response.data;
+        if (responseData.isSuccess) {
+          yield put({
+            type: actionType.LOGOUT_SUCCESS,
+            payload: responseData.data,
+          });
+        } else {
+          yield put({
+            type: actionType.LOGOUT_FAILURE,
+            error: responseData.error,
+          });
+        }
+      } else {
+        yield put({
+          type: actionType.LOGOUT_FAILURE,
+          error: "Something went wrong!",
+        });
+      }
+    } catch (error) {
+      yield put({
+        type: actionType.LOGOUT_FAILURE,
+        error: "Something went wrong!",
+      });
+    }
+  },
   //REGISTER
   registerSaga: function* (action) {
     let payload = action.payload;

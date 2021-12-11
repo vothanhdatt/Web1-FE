@@ -10,6 +10,7 @@ import {
   getListPostByUserRequest,
   deletePostRequest,
   getFeatureMemberRequest,
+  postFilterRequest,
 } from "../../redux/actions";
 import ProfilePost from "../../components/ProiflePost";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,11 +46,13 @@ export default function ProfilePage() {
   const onHandleUpdate = () => {
     //Vào trang cập nhật profile
     history.push(routes.updateprofile);
+    setLoadmore(1);
   };
   //
   const onHandleNewPost = () => {
     //Vào trang tạo bài viết
     history.push(routes.createpost);
+    setLoadmore(1);
   };
   //
   const onHandleDelete = id => {
@@ -59,6 +62,7 @@ export default function ProfilePage() {
       })
     );
     setIdDel(id);
+    setLoadmore(1);
   };
   //
   const onHandleLoadmore = () => {
@@ -67,6 +71,8 @@ export default function ProfilePage() {
   //
   const onFilterSubmit = FormData => {
     //
+    dispatch(postFilterRequest(FormData));
+    setLoadmore(1);
   };
 
   //
@@ -81,12 +87,19 @@ export default function ProfilePage() {
   //
   useEffect(() => {
     dispatch(getProfileRequest());
-    dispatch(getListPostByUserRequest());
+    dispatch(postFilterRequest());
     dispatch(getFeatureMemberRequest());
   }, []);
   useEffect(() => {
-    dispatch(getListPostByUserRequest());
+    dispatch(postFilterRequest());
   }, [idDel]);
+  useEffect(() => {
+    dispatch(
+      postFilterRequest({
+        load_more_number: loadmore,
+      })
+    );
+  }, [loadmore]);
   const profile = useSelector(state => state.getProfileReducer.data);
   const listPost = useSelector(state => state.CRUDPostReducer.data);
   const listFeaturestUser = useSelector(
@@ -278,7 +291,7 @@ export default function ProfilePage() {
                     <div className="bg-gray-200   justify-center">
                       {/* Component Post*/}
                       <ProfilePost
-                        postList={listPost}
+                        postList={listPost.data}
                         profile={profile}
                         onHandleDelete={onHandleDelete}
                       ></ProfilePost>
@@ -288,14 +301,18 @@ export default function ProfilePage() {
                 ) : (
                   <div></div>
                 )}
-                <div className="flex justify-center">
-                  <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    onClick={onHandleLoadmore}
-                  >
-                    Loadmore
-                  </button>
-                </div>
+                {listPost &&
+                  listPost.maxPage > loadmore &&
+                  listPost.maxPage !== 0 && (
+                    <div className="flex justify-center">
+                      <button
+                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        onClick={onHandleLoadmore}
+                      >
+                        Loadmore
+                      </button>
+                    </div>
+                  )}
               </div>
               <div className="col-span-1">
                 <h1 className="pb-1 pl-2 mt-2 text-lg font-bold text-left">
@@ -314,10 +331,6 @@ export default function ProfilePage() {
       </>
     );
   } else {
-    return (
-      <div className="flex justify-center items-center flex-center w-full h-full bg-white opacity-75 fixed">
-        <div className="animate-spin rounded-full h-40 w-40 border-t-4 border-b-4 border-purple-500"></div>
-      </div>
-    );
+    return <div className="w-screen	h-screen"></div>;
   }
 }

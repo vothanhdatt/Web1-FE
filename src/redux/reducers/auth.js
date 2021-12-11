@@ -68,6 +68,32 @@ export default function authReducer(state = initialState, action) {
       toast(action.error);
       return newState;
 
+
+      //Logout
+    case actionTypes.LOGOUT_REQUEST:
+      newState = _.cloneDeep(state);
+      newState.isLoading = true;
+
+      return newState;
+
+    case actionTypes.LOGOUT_SUCCESS:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = true;
+      newState.data = action.payload;
+      cookie.remove("_token");
+      toast("Đăng xuất thành công!");
+      window.location.href = routes.homepage;
+
+      return newState;
+
+    case actionTypes.LOGOUT_FAILURE:
+      newState = _.cloneDeep(state);
+      newState.isLoading = false;
+      newState.isSuccess = false;
+      newState.error = action.error;
+      toast(action.error);
+      return newState;
       //ResetPass
     case actionTypes.RESETPASS_REQUEST:
       newState = _.cloneDeep(state);
