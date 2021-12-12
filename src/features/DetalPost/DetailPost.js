@@ -119,7 +119,7 @@ function DetailPost(props) {
                 <div className="w-16 h-16 ">
                   <img
                     className="w-16 border-2 border-blue-500 rounded-full h-16"
-                    src={env.URL_IMAGE + getDetailPost.authorAvatar}
+                    src={getDetailPost.authorAvatar}
                   />
                 </div>
                 <div className="pl-2 mb-1 whitespace-normal text-sm  ">
@@ -199,7 +199,7 @@ function DetailPost(props) {
                 <img
                   className="rounded-full"
                   key={memberProfile.id}
-                  src={env.URL_IMAGE + memberProfile.avatar}
+                  src={memberProfile.avatar}
                 />
               ) : (
                 <div></div>
@@ -222,7 +222,7 @@ function DetailPost(props) {
                                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 xl:w-16 xl:h-16">
                                   <img
                                     className="w-10 h-10 border-2 border-indigo-500 rounded-full sm:w-12 sm:h-12 md:w-14 md:h-14 xl:w-16 xl:h-16"
-                                    src={env.URL_IMAGE + memberProfile.avatar}
+                                    src={memberProfile.avatar}
                                   />
                                 </div>
                                 <div className="pl-3 -mt-1 -mb-5 text-xs whitespace-normal">

@@ -320,7 +320,7 @@ function Comment(props) {
             <div className="content-center w-8 h-8 mt-1 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-12 xl:h-12">
               <img
                 className="w-8 h-8 border-2 border-blue-500 rounded-full md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-12 xl:h-12"
-                src={env.URL_IMAGE + data.authorAvatar}
+                src={data.authorAvatar}
               />
             </div>
             <div className="flex flex-col items-center w-full mt-1 ml-2 bg-gray-200 sm:ml-4 rounded-xl">

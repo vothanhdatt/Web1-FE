@@ -69,7 +69,7 @@ function ListPost(props) {
                 <div className="mr-3 w-6 h-6 ">
                   <img
                     className="w-6 h-6 border-2 border-blue-500 rounded-full "
-                    src={env.URL_IMAGE + post.authorAvatar}
+                    src={post.authorAvatar}
                   />
                 </div>
                 <div className="">
