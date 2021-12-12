@@ -12,7 +12,6 @@ const Footer = () => {
             <a href="#">Team J</a>
           </div>
           <div className="col-4">
-            <h1>Contact Us</h1>
           </div>
           <div className="col-4">
             <h1>Social Media</h1>
