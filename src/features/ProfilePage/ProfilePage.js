@@ -29,9 +29,8 @@ function classNames(...classes) {
 
 export default function ProfilePage() {
   const [cookies, setCookie, removeCookie] = useCookies(["_token"]);
-  if (!cookies._token) {
-    history.push(routes.home);
-  }
+  let history = useHistory();
+
   const {
     register,
     handleSubmit,
@@ -40,7 +39,9 @@ export default function ProfilePage() {
   } = useForm();
   const [idDel, setIdDel] = useState();
   const [loadmore, setLoadmore] = useState(1);
-  let history = useHistory();
+  //
+  const [dateFilter, setDateFilter] = useState(false);
+
   const dispatch = useDispatch();
   //
   const onHandleUpdate = () => {
@@ -75,8 +76,6 @@ export default function ProfilePage() {
     setLoadmore(1);
   };
 
-  //
-  const [dateFilter, setDateFilter] = useState(false);
   const onHandleFilter = e => {
     if (e.target.value === "date") {
       setDateFilter(true);
@@ -85,6 +84,7 @@ export default function ProfilePage() {
     }
   };
   //
+
   useEffect(() => {
     dispatch(getProfileRequest());
     dispatch(postFilterRequest());
