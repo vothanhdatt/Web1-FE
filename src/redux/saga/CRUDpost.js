@@ -154,7 +154,7 @@ export default {
     try {
       let response = yield global.apiService.apiCall(
         "get",
-        "...",
+        "get-list-post-member-load-more",
         payload,
         false
       );

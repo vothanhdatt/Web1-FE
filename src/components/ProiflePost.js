@@ -161,14 +161,14 @@ function ProfilePost(props) {
                         Comments:
                         <div className="ml-1 text-gray-400 font-thin text-ms">
                           {" "}
-                          10
+                          {post.commentTotal}
                         </div>
                       </div>
                       <div className="flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center">
                         Views:{" "}
                         <div className="ml-1 text-gray-400 font-thin text-ms">
                           {" "}
-                          999
+                          {post.views}
                         </div>
                       </div>
                     </div>
@@ -177,7 +177,7 @@ function ProfilePost(props) {
                         Rating:{" "}
                         <div className="ml-1 text-gray-400 font-thin text-ms">
                           {" "}
-                          4.5
+                          {post.starAverage + " "}
                           <i className="fa fa-star" aria-hidden="true"></i>
                         </div>
                       </div>

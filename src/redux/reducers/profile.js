@@ -61,7 +61,10 @@ export const getProfileReducer = (state = initialState, action) => {
       //console.log("data nè má ơi: ", action.payload);
       localStorage.setItem("avatar", action.payload.avatar);
       toast("Cập nhật thành công.!");
-      window.location.href = routes.profile;
+      setTimeout(() => {
+        window.location.href = routes.profile;
+      }, 2000);
+
       return newState;
 
     case actionTypes.UPDATE_PROFILE_FAILURE:

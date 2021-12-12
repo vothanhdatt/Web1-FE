@@ -1,11 +1,11 @@
 const routes = {
-  homepage: "/homepage",
+  homepage: "/",
   // FEATURE VIEW PROFILE
   profile: "/profile",
   detail: "/detail",
   createpost: "/createpost",
-  Login: "/Login",
-  Register: "/Register",
+  login: "/login",
+  register: "/register",
   Pass: "/Pass",
   Resetpass: "/ResetPass",
   /* GET detailPost
