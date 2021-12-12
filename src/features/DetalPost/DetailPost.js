@@ -97,12 +97,13 @@ function DetailPost(props) {
           text_content: commentText,
         })
       );
-      dispatch(
-        getCommentRequest({
-          post_id: props.match.params.id,
-        })
-      );
     }
+
+    dispatch(
+      getCommentRequest({
+        post_id: props.match.params.id,
+      })
+    );
   }, [data]);
 
   if (getDetailPost) {
