@@ -270,7 +270,7 @@ function DetailPost(props) {
           <div className="col-span-2 max-w-5xl pl-2 mx-auto mt-5 font-sans text-sm font-bold text-center sm:mb-5 md:mb-7 sm:text-base lg:text-lg xl:text-xl">
             <h1>
               Đăng Nhập Để Đánh Giá
-              <Link to={routes.Login}>
+              <Link to={routes.login}>
                 <i
                   className="mx-2 sm:mx-3 fa fa-hand-o-right lg:fa-2x"
                   aria-hidden="true"
