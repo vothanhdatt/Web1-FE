@@ -18,7 +18,7 @@ function classNames(...classes) {
 
 export default function Header(props) {
   const dispatch = useDispatch();
-  const profile = useSelector((state) => state.getProfileReducer.data);
+  const profile = useSelector(state => state.getProfileReducer.data);
   // console.log("PROFILE: ", profile);
   let history = useHistory();
   const [cookies, setCookie, removeCookie] = useCookies(["_token"]);
@@ -35,7 +35,7 @@ export default function Header(props) {
     dispatch(logoutRequest());
   };
   //
-  const change = (e) => {
+  const change = e => {
     props.parenCallBack(e.target.value);
   };
   //
@@ -83,7 +83,7 @@ export default function Header(props) {
                 </div>
                 <div className="hidden sm:ml-0 md:ml-6 sm:block">
                   <div className="flex inline lg:space-x-4">
-                    {navigation.map((item) => (
+                    {navigation.map(item => (
                       <Link
                         key={item.name}
                         to={item.href}
@@ -113,12 +113,12 @@ export default function Header(props) {
                           />
                         </svg>
                         <select
-                          onChange={(e) => change(e)}
+                          onChange={e => change(e)}
                           className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                         >
                           <option>Categories</option>
                           <option value="*">AllCategories</option>
-                          {listCategories.map((post) => (
+                          {listCategories.map(post => (
                             <option value={post.id} key={post.id}>
                               {post.name}
                             </option>
@@ -141,9 +141,9 @@ export default function Header(props) {
                         <img
                           className="w-8 h-8 rounded-full"
                           src={
-                            env.URL_IMAGE + localStorage.getItem("avatar")
-                              ? env.URL_IMAGE + localStorage.getItem("avatar")
-                              : env.URL_IMAGE + "./logo-chicken.png"
+                            localStorage.getItem("avatar")
+                              ? localStorage.getItem("avatar")
+                              : "./logo-chicken.png"
                           }
                           alt=""
                         />
@@ -245,7 +245,7 @@ export default function Header(props) {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
+              {navigation.map(item => (
                 <Link
                   key={item.name}
                   to={item.href}
@@ -274,12 +274,12 @@ export default function Header(props) {
                     />
                   </svg>
                   <select
-                    onChange={(e) => change(e)}
+                    onChange={e => change(e)}
                     className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
                     <option>Feature Categories</option>
                     <option value="*">AllCategories</option>
-                    {featureCategories.map((post) => (
+                    {featureCategories.map(post => (
                       <option value={post.id} key={post.id}>
                         {post.name}
                       </option>
@@ -303,11 +303,11 @@ export default function Header(props) {
                     />
                   </svg>
                   <select
-                    onChange={(e) => change(e)}
+                    onChange={e => change(e)}
                     className="px-3 py-2 text-base font-medium text-gray-300 bg-gray-600 rounded-md appearance-none hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
                     <option value="*">Categories</option>
-                    {listCategories.map((post) => (
+                    {listCategories.map(post => (
                       <option value={post.id} key={post.id}>
                         {post.name}
                       </option>
