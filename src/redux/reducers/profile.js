@@ -3,6 +3,7 @@ import _ from "lodash";
 import routes from "../../constant/routes";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "universal-cookie";
 
 const initialState = {
   isLoading: false,
@@ -18,6 +19,7 @@ toast.configure({
 
 export const getProfileReducer = (state = initialState, action) => {
   let newState = {};
+  let cookie = new Cookies();
   switch (action.type) {
     // FEATURE VIEW PROFILE
     //GET PROFILE
@@ -42,6 +44,10 @@ export const getProfileReducer = (state = initialState, action) => {
       newState.isSuccess = false;
       newState.error = action.error;
       toast(action.error);
+      cookie.remove("_token");
+      setTimeout(() => {
+        window.location.href = routes.homepage;
+      }, 2000);
       return newState;
 
     // FEATURE UPDATE PROFILE
